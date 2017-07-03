@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Nginx的rewrite规则 - Craze-lee 技术点滴
+  Redis的数据结构（Hash） - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -116,32 +116,8 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Nginx的rewrite规则</h1>
+<h1>Redis的数据结构（Hash）</h1>
 
-<p>在server块中写</p>
-
-<pre><code class="language-nginx">server{
-    rewrite 目标URL规则 重定向路径 重写类型
-}
-</code></pre>
-
-<h3 id="toc_0">重写类型</h3>
-
-<p>last：浏览器地址URL不变<br/>
-break：匹配到规则后终止，浏览器地址URL不变<br/>
-redirect：302临时重定向，浏览器地址URL改变<br/>
-permanent：301永久重定向，浏览器地址URL改变</p>
-
-<h3 id="toc_1">Demo</h3>
-
-<pre><code class="language-nginx">server{
-    rewrite /last.html /index.html last; #匹配上仍会继续寻找匹配
-    rewrite /last.html /index.html break; #如果匹配则停止继续匹配
-    rewrite ^/html/(.+?).html$ /post/$1.html permanent; #301永久跳转
-    # /search/key =&gt; /search.html?keyword=key
-    rewrite ^/search\/(.+?)$ /search.html?keyword=$1 redirect; #301临时跳转
-}
-</code></pre>
 
 
 </div>
@@ -153,13 +129,14 @@ permanent：301永久重定向，浏览器地址URL改变</p>
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="14982771388158.html"  title="Previous Post: A new web FrameWork">&laquo; A new web FrameWork</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
+	        <a href="14990551021313.html" 
+	        title="Next Post: Redis的数据结构（List）">Redis的数据结构（List） &raquo;</a>
+	    
 	</div>
   </div>
 </div>
@@ -197,7 +174,7 @@ s.setAttribute('data-timestamp', +new Date());
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '14968966431769.html';
+		var currentURL = '14990636355899.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

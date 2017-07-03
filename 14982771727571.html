@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  This is Redis - Craze-lee 技术点滴
+  Redis的数据结构（String） - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -55,7 +55,11 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="This is Redis" href="14982771727571.html">This is Redis</a></li>
+            <li><a title="Redis的数据结构（Hash）" href="14990636355899.html">Redis的数据结构（Hash）</a></li>
+          
+            <li><a title="Redis的数据结构（List）" href="14990551021313.html">Redis的数据结构（List）</a></li>
+          
+            <li><a title="Redis的数据结构（String）" href="14982771727571.html">Redis的数据结构（String）</a></li>
           
 
       
@@ -90,7 +94,11 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="This is Redis" href="14982771727571.html">This is Redis</a></li>
+                          <li><a title="Redis的数据结构（Hash）" href="14990636355899.html">Redis的数据结构（Hash）</a></li>
+                        
+                          <li><a title="Redis的数据结构（List）" href="14990551021313.html">Redis的数据结构（List）</a></li>
+                        
+                          <li><a title="Redis的数据结构（String）" href="14982771727571.html">Redis的数据结构（String）</a></li>
                         
 
                     
@@ -108,11 +116,75 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>This is Redis</h1>
+<h1>Redis的数据结构（String）</h1>
 
-<h3 id="toc_0">Hello</h3>
+<h3 id="toc_0">一、Redis key规则</h3>
 
-<h3 id="toc_1">world</h3>
+<ul>
+<li>KEY不要太长，不仅小号内存，而且在数据中查找的计算成本很高；</li>
+<li>使用一种模式，“object-type:id:field”，例如：“user:1000:password”</li>
+</ul>
+
+<h3 id="toc_1">二、字符串（string）</h3>
+
+<p>使用该类型，Redis相当于可持久化的memcached服务器<br/>
+（注：mem数据仅保存在内存中，服务器重启后数据将丢失）</p>
+
+<p><strong>普通操作</strong></p>
+
+<pre><code>&gt; set user:name crazelee  // 设置
+OK
+
+&gt; get user:name   // 获取
+&quot;crazelee&quot;
+
+&gt; del user:name   // 删除
+(integer) 1
+
+</code></pre>
+
+<p><strong>生命周期</strong></p>
+
+<pre><code>&gt; set user:name crazelee ex 10  // 设置10秒过期
+OK
+
+&gt; ttl user:name  // 查看生命期
+(integer) 3
+
+&gt; expire user:name // 设置过期时间
+</code></pre>
+
+<p><strong>进阶操作</strong></p>
+
+<pre><code>&gt; getset user:100:name lee  // 获取旧值并重新赋值
+&quot;crazelee&quot;
+
+&gt; get user:100:name
+&quot;lee&quot;
+
+&gt; mset user:100:name crazelee user:100:score 96 // 设置多个key
+OK
+
+&gt; mget user:100:name user:100:score
+1) &quot;crazelee&quot;
+2) &quot;96&quot;
+</code></pre>
+
+<p><strong>修改操作</strong></p>
+
+<pre><code>&gt; strlen user:100:name // 获取
+&gt; append user:100:name world  // 拼接
+</code></pre>
+
+<p><strong>INCR key</strong>：原子操作加1。</p>
+
+<ul>
+<li>key不存在，默认值为0，再加1;</li>
+<li>key存在，但是存储的不能表示为证书，执行该操作会报错；</li>
+</ul>
+
+<p><strong>应用场景</strong><br/>
+1. 验证码，通常有过期时间，一般10分钟，那就直接设置过期时间；</p>
 
 
 </div>
@@ -124,6 +196,8 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
+	        <a href="14990551021313.html"  title="Previous Post: Redis的数据结构（List）">&laquo; Redis的数据结构（List）</a>
+	    
 	</div>
   </div>
   <div class="large-6 columns">
