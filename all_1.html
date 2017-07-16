@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Redis的数据结构（List） - Craze-lee 技术点滴
+  Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -129,108 +129,44 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>Redis的数据结构（List）</h1>
+ 
 
-<h3 id="toc_0">一、数据结构</h3>
 
-<p>双向链表<br/>
-<img src="media/14990551021313/14990552686157.jpg" alt=""/></p>
+	
+		<div class="markdown-body">
+		<h1>Nginx的rewrite规则</h1>
 
-<h3 id="toc_1">二、链表（list）</h3>
+		<p>在server块中写</p>
 
-<p>Redis的list就是一个极其强大的队列系统。</p>
-
-<p><strong>基本操作: PUSH/POP</strong></p>
-
-<pre><code>&gt; rpush queue a  // 从右边进队列
-(integer) 1
-&gt; rpush queue b
-(integer) 2
-&gt; lrange queue 0 -1  // 获取队列内容
-1) &quot;a&quot;
-2) &quot;b&quot;
-&gt; lpop queue  // 从左边出队列
-&quot;a&quot;
+<pre><code class="language-nginx">server{
+    rewrite 目标URL规则 重定向路径 重写类型
+}
 </code></pre>
 
-<p><strong>进阶操作</strong></p>
+<h3 id="toc_0">重写类型</h3>
 
-<pre><code>&gt; rpoplpush source_list dest_list
+<p>last：浏览器地址URL不变<br/>
+break：匹配到规则后终止，浏览器地址URL不变<br/>
+redirect：302临时重定向，浏览器地址URL改变<br/>
+permanent：301永久重定向，浏览器地址URL改变</p>
+
+<h3 id="toc_1">Demo</h3>
+
+<pre><code class="language-nginx">server{
+    rewrite /last.html /index.html last; #匹配上仍会继续寻找匹配
+    rewrite /last.html /index.html break; #如果匹配则停止继续匹配
+    rewrite ^/html/(.+?).html$ /post/$1.html permanent; #301永久跳转
+    # /search/key =&gt; /search.html?keyword=key
+    rewrite ^/search\/(.+?)$ /search.html?keyword=$1 redirect; #301临时跳转
+}
 </code></pre>
 
-<p>原子性地返回并移除存储在 source 的列表的最后一个元素（列表尾部元素）， 并把该元素放入存储在 destination 的列表的第一个元素位置（列表头部）。</p>
 
-<p>应用场景1：安全的队列。例如，当接收到消息后，出现了网络问题或者消费者端崩溃了， 那么这个消息就丢失了。问题：消费者端取到消息的同时把该消息放入一个正在处理中的列表。 当消息被处理了之后，该命令会使用 LREM 命令来移除正在处理中列表中的对应消息。<br/>
-另外，可以添加一个客户端来监控这个正在处理中列表，如果有某些消息已经在这个列表中存在很长时间了（即超过一定的处理时限）， 那么这个客户端会把这些超时消息重新加入到队列中。</p>
+		</div>
+	
 
-<p>应用场景2：可以作为补发队列。</p>
-
-
-</div>
-
-<br /><br />
-<hr />
-
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="14990636355899.html"  title="Previous Post: Redis的数据结构（Hash）">&laquo; Redis的数据结构（Hash）</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="14982771727571.html" 
-	        title="Next Post: Redis的数据结构（String）">Redis的数据结构（String） &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
-
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://craze-lee.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><!-- JiaThis Button BEGIN --><div id="ckepop">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_weixin">微信</a> 
-<a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a> </div> 
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
-</div> <!-- JiaThis Button END -->
-
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '14990551021313.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
+  
+  
 </div></div>
 
 
