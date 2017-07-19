@@ -75,6 +75,8 @@
         <li><label>读书笔记</label></li>
 
           
+            <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
+          
             <li><a title="你的团队需要一个会讲故事的人" href="15002081946513.html">你的团队需要一个会讲故事的人</a></li>
           
 
@@ -84,6 +86,14 @@
 
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>数据库</label></li>
+
+          
+            <li><a title="LeetCode 627 Swap Salary" href="15003591001983.html">LeetCode 627 Swap Salary</a></li>
           
 
       
@@ -126,6 +136,8 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
+                          <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
+                        
                           <li><a title="你的团队需要一个会讲故事的人" href="15002081946513.html">你的团队需要一个会讲故事的人</a></li>
                         
 
@@ -133,6 +145,12 @@
                       <li class="side-title"><span>Golang</span></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>数据库</span></li>
+                        
+                          <li><a title="LeetCode 627 Swap Salary" href="15003591001983.html">LeetCode 627 Swap Salary</a></li>
                         
 
                     
@@ -148,12 +166,50 @@
 
 	
 		<div class="markdown-body">
-		<h1>A new web FrameWork</h1>
+		<h1>Redis的数据结构（List）</h1>
 
-		<h2 id="toc_0">Hello</h2>
+		<h3 id="toc_0">一、数据结构</h3>
+
+<p>双向链表<br/>
+<img src="media/14990551021313/14990552686157.jpg" alt=""/></p>
+
+<h3 id="toc_1">二、链表（list）</h3>
+
+<p>Redis的list就是一个极其强大的队列系统。</p>
+
+<p><strong>基本操作: PUSH/POP</strong></p>
+
+<pre><code>&gt; rpush queue a  // 从右边进队列
+(integer) 1
+&gt; rpush queue b
+(integer) 2
+&gt; lrange queue 0 -1  // 获取队列内容
+1) &quot;a&quot;
+2) &quot;b&quot;
+&gt; lpop queue  // 从左边出队列
+&quot;a&quot;
+</code></pre>
+
+<p><strong>进阶操作</strong></p>
+
+<pre><code>&gt; rpoplpush source_list dest_list
+</code></pre>
+
+<p>原子性地返回并移除存储在 source 的列表的最后一个元素（列表尾部元素）， 并把该元素放入存储在 destination 的列表的第一个元素位置（列表头部）。</p>
+
+<p>应用场景1：安全的队列。例如，当接收到消息后，出现了网络问题或者消费者端崩溃了， 那么这个消息就丢失了。问题：消费者端取到消息的同时把该消息放入一个正在处理中的列表。 当消息被处理了之后，该命令会使用 LREM 命令来移除正在处理中列表中的对应消息。<br/>
+另外，可以添加一个客户端来监控这个正在处理中列表，如果有某些消息已经在这个列表中存在很长时间了（即超过一定的处理时限）， 那么这个客户端会把这些超时消息重新加入到队列中。</p>
+
+<p>应用场景2：可以作为补发队列。</p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
 	
 
  
