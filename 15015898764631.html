@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Redis的数据结构（String） - Craze-lee 技术点滴
+  当你的才华还撑不起你的梦想时 - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -180,75 +180,35 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Redis的数据结构（String）</h1>
+<h1>当你的才华还撑不起你的梦想时</h1>
 
-<h3 id="toc_0">一、Redis key规则</h3>
+<p>无意间看到这本书，其实刚开始听书名，觉得是鸡汤书，但好像很久没喝汤了，就随手到亚马逊买了电子书看看。两天的时间看完了，上下班路上加中午午休前看一会。</p>
 
-<ul>
-<li>KEY不要太长，不仅小号内存，而且在数据中查找的计算成本很高；</li>
-<li>使用一种模式，“object-type:id:field”，例如：“user:1000:password”</li>
-</ul>
+<p>看到最后，我不想定义为鸡汤，因为确实产生了很多共鸣。我觉得能产生共鸣的书都是好书，作者把很多现实讲明白了。</p>
 
-<h3 id="toc_1">二、字符串（string）</h3>
+<h3 id="toc_0">摘抄</h3>
 
-<p>使用该类型，Redis相当于可持久化的memcached服务器<br/>
-（注：mem数据仅保存在内存中，服务器重启后数据将丢失）</p>
+<p>我们是如何一步步落后于别人的，自己心里特别清楚，无非是从生活中一点点的差距开始。</p>
 
-<p><strong>普通操作</strong></p>
+<p>无论经济条件如何，<strong>为自己投资，都是最划算的事情</strong>，永远不会亏，只要你有强烈的愿望去赚钱，多多少少一定能赚得到。</p>
 
-<pre><code>&gt; set user:name crazelee  // 设置
-OK
+<p>在年轻的时候，或者说我们都还穷的时候，大家都喜欢谈情怀和理想，进入社会渐久，慢慢明白物质的价值，准确的说，是金钱的价值。比如金钱会让你更快地实现理想，能让你生活的稳定安康……</p>
 
-&gt; get user:name   // 获取
-&quot;crazelee&quot;
+<p>每个人的眼界和能力都是特别有限的，但心胸可以是无限的。<strong>能不能成大事，最重要的不是能力，而是心胸</strong>，有了心胸，便可以与更多有能力的人去合作，去完成梦想，而不是在自己的小黑屋里自怨自艾，觉得天不遂人愿。</p>
 
-&gt; del user:name   // 删除
-(integer) 1
+<p>很多生活里的事都不是什么大事，<strong>越是一个人消极地想，越容易走进死胡同</strong>。</p>
 
-</code></pre>
+<p>任何时间，任何年纪，没什么学起来能轻而易举。任何技能的习得除了靠天分，还要准备好好奇心，求知欲以及吃苦，甚至，要比以前更辛苦。</p>
 
-<p><strong>生命周期</strong></p>
+<p>价值能让一个人的身家倍增，而不是时间，而一个人价值的多少，要用专业程度来体现。</p>
 
-<pre><code>&gt; set user:name crazelee ex 10  // 设置10秒过期
-OK
+<p>皇冠灼灼生辉，是梦想与荣耀的象征。当你的才华还撑不起你的梦想时，你就需要玩命地提升自己的实力。欲带皇冠，必承其重。</p>
 
-&gt; ttl user:name  // 查看生命期
-(integer) 3
+<p>所有关于青春里的奋斗故事，都离不开艰苦的环境，捉襟见肘的窘迫，但那些回忆起来能让你的皱纹都舒展开来的人和事，才是你绵长的生命时光里，最温暖幸福的人和事。</p>
 
-&gt; expire user:name // 设置过期时间
-</code></pre>
+<p><strong>这世界从来不会跟你过不去，你得到的任何好与坏，都是自己作的</strong>。</p>
 
-<p><strong>进阶操作</strong></p>
-
-<pre><code>&gt; getset user:100:name lee  // 获取旧值并重新赋值
-&quot;crazelee&quot;
-
-&gt; get user:100:name
-&quot;lee&quot;
-
-&gt; mset user:100:name crazelee user:100:score 96 // 设置多个key
-OK
-
-&gt; mget user:100:name user:100:score
-1) &quot;crazelee&quot;
-2) &quot;96&quot;
-</code></pre>
-
-<p><strong>修改操作</strong></p>
-
-<pre><code>&gt; strlen user:100:name // 获取
-&gt; append user:100:name world  // 拼接
-</code></pre>
-
-<p><strong>INCR key</strong>：原子操作加1。</p>
-
-<ul>
-<li>key不存在，默认值为0，再加1;</li>
-<li>key存在，但是存储的不能表示为证书，执行该操作会报错；</li>
-</ul>
-
-<p><strong>应用场景</strong><br/>
-1. 验证码，通常有过期时间，一般10分钟，那就直接设置过期时间；</p>
+<p><strong>根本没有正确的选择，我们只不过是要努力奋斗，使当初的选择变得正确</strong>。</p>
 
 
 </div>
@@ -260,15 +220,13 @@ OK
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="14990551021313.html"  title="Previous Post: Redis的数据结构（List）">&laquo; Redis的数据结构（List）</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="14982771388158.html" 
-	        title="Next Post: A new web FrameWork">A new web FrameWork &raquo;</a>
+	        <a href="15005354095787.html" 
+	        title="Next Post: CoreSeek中文全文索引 （记一次填坑过程）">CoreSeek中文全文索引 （记一次填坑过程） &raquo;</a>
 	    
 	</div>
   </div>
@@ -284,7 +242,7 @@ OK
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '14982771727571.html';
+		var currentURL = '15015898764631.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

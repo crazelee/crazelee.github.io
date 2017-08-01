@@ -75,6 +75,8 @@
         <li><label>读书笔记</label></li>
 
           
+            <li><a title="当你的才华还撑不起你的梦想时" href="15015898764631.html">当你的才华还撑不起你的梦想时</a></li>
+          
             <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
           
             <li><a title="你的团队需要一个会讲故事的人" href="15002081946513.html">你的团队需要一个会讲故事的人</a></li>
@@ -144,6 +146,8 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
+                          <li><a title="当你的才华还撑不起你的梦想时" href="15015898764631.html">当你的才华还撑不起你的梦想时</a></li>
+                        
                           <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
                         
                           <li><a title="你的团队需要一个会讲故事的人" href="15002081946513.html">你的团队需要一个会讲故事的人</a></li>
@@ -180,98 +184,35 @@
 
 	
 		<div class="markdown-body">
-		<h1>CoreSeek中文全文索引 （记一次填坑过程）</h1>
+		<h1>当你的才华还撑不起你的梦想时</h1>
 
-		<h3 id="toc_0">环境安装</h3>
+		<p>无意间看到这本书，其实刚开始听书名，觉得是鸡汤书，但好像很久没喝汤了，就随手到亚马逊买了电子书看看。两天的时间看完了，上下班路上加中午午休前看一会。</p>
 
-<p>第一天叫运维安装环境，嗯~ 其实网上能找到好多教程，不赘述了</p>
+<p>看到最后，我不想定义为鸡汤，因为确实产生了很多共鸣。我觉得能产生共鸣的书都是好书，作者把很多现实讲明白了。</p>
 
-<h3 id="toc_1">代码实现</h3>
+<h3 id="toc_0">摘抄</h3>
 
-<p>环境装好了，那就撸代码了哈，啪啪啪，从网上拷过来，嗯~ 就跑起来了</p>
+<p>我们是如何一步步落后于别人的，自己心里特别清楚，无非是从生活中一点点的差距开始。</p>
 
-<pre><code class="language-php">    $sphinx = new SphinxClient;
-    $sphinx-&gt;setServer(&quot;localhost&quot;, 9312);
-    $sphinx-&gt;SetLimits ( 0, 100);  // 设置偏移量，类似mysql的limit
-    $sphinx-&gt;setArrayResult(true);  // 设置返回数组格式
-    $sphinx-&gt;setSelect(&quot;*&quot;);        // 模式搜索全部*
-    $sphinx-&gt;setMatchMode(SPH_MATCH_ANY);  // 任意单词匹配（模式看官网就好了）
-    $result = $sphinx-&gt;query($keyword,&#39;test1&#39;);//执行搜索操作,参数(关键词，[索引名])
-</code></pre>
+<p>无论经济条件如何，<strong>为自己投资，都是最划算的事情</strong>，永远不会亏，只要你有强烈的愿望去赚钱，多多少少一定能赚得到。</p>
 
-<p>嗯~ 事情到这，哎呀，好像基本做完了。</p>
+<p>在年轻的时候，或者说我们都还穷的时候，大家都喜欢谈情怀和理想，进入社会渐久，慢慢明白物质的价值，准确的说，是金钱的价值。比如金钱会让你更快地实现理想，能让你生活的稳定安康……</p>
 
-<p>仔细一看，诶？这搜出来的是什么？诶？这相关性呢？这结果怎么搜出来？懵逼.jpg<br/>
-心想，好像只有前面10条左右是垃圾数据，那我<code>SetLimit(10, 100)</code>好了。<br/>
-这是不是好像可以了，嗯？？</p>
+<p>每个人的眼界和能力都是特别有限的，但心胸可以是无限的。<strong>能不能成大事，最重要的不是能力，而是心胸</strong>，有了心胸，便可以与更多有能力的人去合作，去完成梦想，而不是在自己的小黑屋里自怨自艾，觉得天不遂人愿。</p>
 
-<p>算了，好像是可以了。嗯，但是这结果怪怪的，好像没有高亮啊，看不出来是搜出来的内容啊。</p>
+<p>很多生活里的事都不是什么大事，<strong>越是一个人消极地想，越容易走进死胡同</strong>。</p>
 
-<p>恩，那就搞搞吧，高亮。</p>
+<p>任何时间，任何年纪，没什么学起来能轻而易举。任何技能的习得除了靠天分，还要准备好好奇心，求知欲以及吃苦，甚至，要比以前更辛苦。</p>
 
-<h3 id="toc_2">实现高亮</h3>
+<p>价值能让一个人的身家倍增，而不是时间，而一个人价值的多少，要用专业程度来体现。</p>
 
-<p>来来来，Google一通，咦，原来有这么个好东西啊，赶紧common+c啊</p>
+<p>皇冠灼灼生辉，是梦想与荣耀的象征。当你的才华还撑不起你的梦想时，你就需要玩命地提升自己的实力。欲带皇冠，必承其重。</p>
 
-<pre><code class="language-php">$opts = [
-     &quot;before_match&quot; =&gt; &quot;&lt;font style=&#39;font-weight:bold;color:#f00&#39;&gt;&quot;,
-     &quot;after_match&quot; =&gt; &quot;&lt;/font&gt;&quot;
-];
-$sphinx-&gt;BuildExcerpts($item, &#39;test1&#39;, $keyword, $opts);
-</code></pre>
+<p>所有关于青春里的奋斗故事，都离不开艰苦的环境，捉襟见肘的窘迫，但那些回忆起来能让你的皱纹都舒展开来的人和事，才是你绵长的生命时光里，最温暖幸福的人和事。</p>
 
-<p>啪啪啪，兴奋脸.jpb，刷新。诶？？？？这什么？红是变红了？怎么是乱码？世界的爱呢？</p>
+<p><strong>这世界从来不会跟你过不去，你得到的任何好与坏，都是自己作的</strong>。</p>
 
-<p>好吧，既然乱码嘛，这个应该也好解决，无非那几个嘛，那就<code>header(..utf8)</code>，<code>iconv</code></p>
-
-<p>结果当然是被打脸啦~~~~ </p>
-
-<p>算了，那老子不用你的高亮了，自己写一个：分割字符，替换关键字，来上代码：</p>
-
-<pre><code class="language-php">    public function __replace($content, $keyword)
-    {
-        $opts = array(&quot;before_match&quot;=&gt;&quot;&lt;font style=&#39;font-weight:bold;color:#f00&#39;&gt;&quot;,&quot;after_match&quot;=&gt;&quot;&lt;/font&gt;&quot;);
-
-        $keyword = preg_split(&#39;/(?&lt;!^)(?!$)/u&#39;, $keyword );
-
-        foreach ($keyword as $word) {
-            $content = str_replace($word,$opts[&#39;before_match&#39;] . $word . $opts[&#39;after_match&#39;],$content);
-        }
-
-        return $content;
-    }
-</code></pre>
-
-<p>恩，本来这样基本告一段落了，这个demo可以拿出去看了。但是搜索不出来，心里不舒服，感觉做了坏事怕被发现一样~~~~</p>
-
-<h3 id="toc_3">搜索准确度</h3>
-
-<p>几乎查完了所有coreseek手册，一直以为是打开方式不对，猜想是某个参数可以配置搜索权重。</p>
-
-<p><code>SetFieldWeights (设置字段权重)</code> <code>SetSortMode (设置排序模式)</code>  ...</p>
-
-<p>这些函数拿起来就是一通调试，最后还是GG，跪倒在自己的无知面前</p>
-
-<p>最后，实在想不通，心想会不会配置文件错了，于是转到配置文件，一行一行的看。</p>
-
-<p>皇天不负有心人啊！皇天不负有心人啊！皇天不负有心人啊！</p>
-
-<p>终于看到一行，有点奇怪的东西。</p>
-
-<pre><code class="language-php">index test1{
-    charset_type = sbcs  // 这一行是什么？sbcs是什么，还有这种字符集？
-}
-</code></pre>
-
-<p>当然是马上Google啊，终于真相了~~~~ 原来要这样！！！</p>
-
-<pre><code class="language-php">    charset_type = zh_cn.utf-8  // 中文字符
-    charset_dictpath = /usr/local/mmseg3/etc/  // 设置分词方式：mmseg中文分词
-</code></pre>
-
-<p><img src="media/15005354095787/15005372485955.jpg" alt=""/></p>
-
-<p>终于成功了，然后之前的<code>BuildExcerpts</code>也不会乱码了。哼~~</p>
+<p><strong>根本没有正确的选择，我们只不过是要努力奋斗，使当初的选择变得正确</strong>。</p>
 
 
 		</div>
