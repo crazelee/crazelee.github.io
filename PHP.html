@@ -101,7 +101,7 @@
         <li><label>PHP</label></li>
 
           
-            <li><a title="利用coreseek实现中文全文索引（记一次填坑过程）" href="15005354095787.html">利用coreseek实现中文全文索引（记一次填坑过程）</a></li>
+            <li><a title="CoreSeek中文全文索引 （记一次填坑过程）" href="15005354095787.html">CoreSeek中文全文索引 （记一次填坑过程）</a></li>
           
 
       
@@ -164,7 +164,7 @@
                     
                       <li class="side-title"><span>PHP</span></li>
                         
-                          <li><a title="利用coreseek实现中文全文索引（记一次填坑过程）" href="15005354095787.html">利用coreseek实现中文全文索引（记一次填坑过程）</a></li>
+                          <li><a title="CoreSeek中文全文索引 （记一次填坑过程）" href="15005354095787.html">CoreSeek中文全文索引 （记一次填坑过程）</a></li>
                         
 
                     
@@ -180,7 +180,7 @@
 
 	
 		<div class="markdown-body">
-		<h1>利用coreseek实现中文全文索引（记一次填坑过程）</h1>
+		<h1>CoreSeek中文全文索引 （记一次填坑过程）</h1>
 
 		<h3 id="toc_0">环境安装</h3>
 
@@ -226,7 +226,7 @@ $sphinx-&gt;BuildExcerpts($item, &#39;test1&#39;, $keyword, $opts);
 
 <p>结果当然是被打脸啦~~~~ </p>
 
-<p>算了，那老子不用你的高亮了，我也可以自己写一个的嘛，分割字符，替换关键字，来上代码：</p>
+<p>算了，那老子不用你的高亮了，自己写一个：分割字符，替换关键字，来上代码：</p>
 
 <pre><code class="language-php">    public function __replace($content, $keyword)
     {
@@ -265,7 +265,7 @@ $sphinx-&gt;BuildExcerpts($item, &#39;test1&#39;, $keyword, $opts);
 
 <p>当然是马上Google啊，终于真相了~~~~ 原来要这样！！！</p>
 
-<pre><code>    charset_type = zh_cn.utf-8  // 中文字符
+<pre><code class="language-php">    charset_type = zh_cn.utf-8  // 中文字符
     charset_dictpath = /usr/local/mmseg3/etc/  // 设置分词方式：mmseg中文分词
 </code></pre>
 
