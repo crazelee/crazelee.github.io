@@ -75,6 +75,8 @@
         <li><label>读书笔记</label></li>
 
           
+            <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
+          
             <li><a title="当你的才华还撑不起你的梦想时" href="15015898764631.html">当你的才华还撑不起你的梦想时</a></li>
           
             <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
@@ -146,6 +148,8 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
+                          <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
+                        
                           <li><a title="当你的才华还撑不起你的梦想时" href="15015898764631.html">当你的才华还撑不起你的梦想时</a></li>
                         
                           <li><a title="优秀的人，都舍得对自己下狠手" href="15003441287249.html">优秀的人，都舍得对自己下狠手</a></li>
@@ -184,35 +188,15 @@
 
 	
 		<div class="markdown-body">
-		<h1>Nginx的rewrite规则</h1>
+		<h1>A new web FrameWork</h1>
 
-		<p>在server块中写</p>
-
-<pre><code class="language-nginx">server{
-    rewrite 目标URL规则 重定向路径 重写类型
-}
-</code></pre>
-
-<h3 id="toc_0">重写类型</h3>
-
-<p>last：浏览器地址URL不变<br/>
-break：匹配到规则后终止，浏览器地址URL不变<br/>
-redirect：302临时重定向，浏览器地址URL改变<br/>
-permanent：301永久重定向，浏览器地址URL改变</p>
-
-<h3 id="toc_1">Demo</h3>
-
-<pre><code class="language-nginx">server{
-    rewrite /last.html /index.html last; #匹配上仍会继续寻找匹配
-    rewrite /last.html /index.html break; #如果匹配则停止继续匹配
-    rewrite ^/html/(.+?).html$ /post/$1.html permanent; #301永久跳转
-    # /search/key =&gt; /search.html?keyword=key
-    rewrite ^/search\/(.+?)$ /search.html?keyword=$1 redirect; #301临时跳转
-}
-</code></pre>
+		<h2 id="toc_0">Hello</h2>
 
 
 		</div>
+	
+
+ 
 	
 
   

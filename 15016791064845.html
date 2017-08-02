@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Redis的数据结构（List） - Craze-lee 技术点滴
+  京东平台数据化运营 - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -184,41 +184,20 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Redis的数据结构（List）</h1>
+<h1>京东平台数据化运营</h1>
 
-<h3 id="toc_0">一、数据结构</h3>
+<p>个人认为，运营，其实就是研究人性的东西，研究怎么让用户购买。</p>
 
-<p>双向链表<br/>
-<img src="media/14990551021313/14990552686157.jpg" alt=""/></p>
+<p>此书结合日常的现象，场景作分析，确实更容易让人明白。</p>
 
-<h3 id="toc_1">二、链表（list）</h3>
+<p>看完本书，两个惊叹：</p>
 
-<p>Redis的list就是一个极其强大的队列系统。</p>
+<ol>
+<li>京东提供给商家的分析系统真是太完善了。</li>
+<li>经过多年的积累，京东对于用户体验，人性的分析已经非常到位透彻了。</li>
+</ol>
 
-<p><strong>基本操作: PUSH/POP</strong></p>
-
-<pre><code>&gt; rpush queue a  // 从右边进队列
-(integer) 1
-&gt; rpush queue b
-(integer) 2
-&gt; lrange queue 0 -1  // 获取队列内容
-1) &quot;a&quot;
-2) &quot;b&quot;
-&gt; lpop queue  // 从左边出队列
-&quot;a&quot;
-</code></pre>
-
-<p><strong>进阶操作</strong></p>
-
-<pre><code>&gt; rpoplpush source_list dest_list
-</code></pre>
-
-<p>原子性地返回并移除存储在 source 的列表的最后一个元素（列表尾部元素）， 并把该元素放入存储在 destination 的列表的第一个元素位置（列表头部）。</p>
-
-<p>应用场景1：安全的队列。例如，当接收到消息后，出现了网络问题或者消费者端崩溃了， 那么这个消息就丢失了。问题：消费者端取到消息的同时把该消息放入一个正在处理中的列表。 当消息被处理了之后，该命令会使用 LREM 命令来移除正在处理中列表中的对应消息。<br/>
-另外，可以添加一个客户端来监控这个正在处理中列表，如果有某些消息已经在这个列表中存在很长时间了（即超过一定的处理时限）， 那么这个客户端会把这些超时消息重新加入到队列中。</p>
-
-<p>应用场景2：可以作为补发队列。</p>
+<p><img src="media/15016791064845/%E4%BA%AC%E4%B8%9C%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E5%8C%96%E8%BF%90%E8%90%A5.png" alt="京东平台数据化运营"/></p>
 
 
 </div>
@@ -230,15 +209,13 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="14990636355899.html"  title="Previous Post: Redis的数据结构（Hash）">&laquo; Redis的数据结构（Hash）</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="14982771727571.html" 
-	        title="Next Post: Redis的数据结构（String）">Redis的数据结构（String） &raquo;</a>
+	        <a href="15015898764631.html" 
+	        title="Next Post: 当你的才华还撑不起你的梦想时">当你的才华还撑不起你的梦想时 &raquo;</a>
 	    
 	</div>
   </div>
@@ -254,7 +231,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '14990551021313.html';
+		var currentURL = '15016791064845.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
