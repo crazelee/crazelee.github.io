@@ -67,6 +67,14 @@
         <li><label>Nginx</label></li>
 
           
+            <li><a title="Linux 常用工具" href="15021598061539.html">Linux 常用工具</a></li>
+          
+            <li><a title="Linux 常用命令" href="15021597682775.html">Linux 常用命令</a></li>
+          
+            <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
+          
+            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
+          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -142,6 +150,14 @@
                     
                       <li class="side-title"><span>Nginx</span></li>
                         
+                          <li><a title="Linux 常用工具" href="15021598061539.html">Linux 常用工具</a></li>
+                        
+                          <li><a title="Linux 常用命令" href="15021597682775.html">Linux 常用命令</a></li>
+                        
+                          <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
+                        
+                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
+                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
@@ -188,35 +204,45 @@
 
 	
 		<div class="markdown-body">
-		<h1>Nginx的rewrite规则</h1>
+		<h1>Linux 常用工具</h1>
 
-		<p>在server块中写</p>
+		<h3 id="toc_0">rsync</h3>
 
-<pre><code class="language-nginx">server{
-    rewrite 目标URL规则 重定向路径 重写类型
-}
-</code></pre>
+<p>remote sync 远程同步</p>
 
-<h3 id="toc_0">重写类型</h3>
+<p>快速：第一次rsync会复制全部内容，之后只传输修改过的文件</p>
 
-<p>last：浏览器地址URL不变<br/>
-break：匹配到规则后终止，浏览器地址URL不变<br/>
-redirect：302临时重定向，浏览器地址URL改变<br/>
-permanent：301永久重定向，浏览器地址URL改变</p>
+<h5 id="toc_1">六种工作模式：</h5>
 
-<h3 id="toc_1">Demo</h3>
+<ol>
+<li>拷贝本地文件文件 <code>rsync -a /data /backup</code></li>
+<li>本地拷贝到远程服务器 <code>rsync -avz *.c foo:src</code></li>
+<li>远程服务器拷贝到本地 <code>rsync -avz foo:src/bar /data</code></li>
+<li>远程rsync服务器拷贝到本地 <code>rsync -av root@192.168.78.192::www /backup</code></li>
+<li>本地拷贝到远程rsync服务器 <code>rsync -av /backup root@192.168.78.192:www</code></li>
+<li>列出远程机器的文件列表 <code>rsync -v rsync://192.168.78.192/www</code></li>
+</ol>
 
-<pre><code class="language-nginx">server{
-    rewrite /last.html /index.html last; #匹配上仍会继续寻找匹配
-    rewrite /last.html /index.html break; #如果匹配则停止继续匹配
-    rewrite ^/html/(.+?).html$ /post/$1.html permanent; #301永久跳转
-    # /search/key =&gt; /search.html?keyword=key
-    rewrite ^/search\/(.+?)$ /search.html?keyword=$1 redirect; #301临时跳转
-}
-</code></pre>
+<p>【注】A、B服务器都需要安装rsync</p>
+
+<h3 id="toc_2">crontab</h3>
+
+<p><img src="media/15021598061539/15021621913430.jpg" alt=""/></p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
 	
 
   

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Golang - Craze-lee 技术点滴
+  PHP-FPM 运行原理 - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -199,51 +199,99 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>PHP-FPM 运行原理</h1>
+
+<h3 id="toc_0">Common Gateway Interface 通用网关接口</h3>
+
+<p>cgi是外部应用程序（cgi程序）与web服务器之间的接口标准</p>
+
+<p>工作原理<br/>
+<img src="media/15021597491039/15101933219088.jpg" alt=""/></p>
+
+<h3 id="toc_1">演变过程</h3>
+
+<h4 id="toc_2">阶段一: cgi</h4>
+
+<p>每接收到一个请求，都会fork一个cgi请求，结束后kill；如果有100个请求，就需要fork、kill php-cgi 100次</p>
+
+<h4 id="toc_3">阶段二：fast-cgi</h4>
+
+<p>处理完后不会kill，保留进程，可以一次处理多个请求</p>
+
+<h4 id="toc_4">阶段三：php-fpm</h4>
+
+<p>php-fast-cgi Process Manager 是FastCGI的实现，并提供进程管理</p>
+
+<p>两种进程：</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>个数</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>master</strong></td>
+<td>一个</td>
+<td>监听端口，接收Web Server的请求</td>
+</tr>
+<tr>
+<td><strong>worker</strong></td>
+<td>多个</td>
+<td>每个进程内嵌一个PHP解释器，PHP代码真正执行的地方</td>
+</tr>
+</tbody>
+</table>
+
+<p>未完待续...</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>Mac Golang环境安装 & Sublime配置</h1>
+</div>
 
-		<h3 id="toc_0">安装包下载</h3>
+<br /><br />
+<hr />
 
-<p>下载地址：<a href="https://golang.org/dl/">官网下载</a></p>
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15021597682775.html"  title="Previous Post: Linux 常用命令">&laquo; Linux 常用命令</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15021597375355.html" 
+	        title="Next Post: Nginx 负载均衡">Nginx 负载均衡 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-<p><img src="media/15002985849637/15002989696283.jpg" alt=""/></p>
-
-<p>下载完后，傻瓜式一直点就行，直到完成<br/>
-安装完成后，默认是路径是<code>/usr/local/go</code></p>
-
-<h3 id="toc_1">环境变量配置</h3>
-
-<p>因为我的环境是zsh，所以执行以下在 <strong>.zshrc</strong> 文件中添加以下内容</p>
-
-<pre><code>export GOROOT=/usr/local/go
-export PATH=/usr/local/go/bin:$PATH
-export GOPATH=/Users/crazelee/go
-</code></pre>
-
-<p>重启后，执行 <code>go env</code>，将会出现这样的内容，说明就成功了<br/>
-<img src="media/15002985849637/15002992143001.jpg" alt=""/></p>
-
-<h3 id="toc_2">sublime text3配置</h3>
-
-<ol>
-<li>安装插件GoSublime</li>
-<li>按键<code>common + shift + p</code> 输入go bulid
-<img src="media/15002985849637/15002994049248.jpg" alt=""/></li>
-<li>在下方出现命令框，输入<code>run main.go</code>
-<img src="media/15002985849637/15002994622630.jpg" alt=""/>
-<img src="media/15002985849637/15002994995976.jpg" alt=""/></li>
-</ol>
-
-
-		</div>
-	
-
-  
-  
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140471"></script>
+<!-- UY END -->
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15021597491039.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

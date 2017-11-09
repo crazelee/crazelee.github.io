@@ -67,6 +67,14 @@
         <li><label>Nginx</label></li>
 
           
+            <li><a title="Linux 常用工具" href="15021598061539.html">Linux 常用工具</a></li>
+          
+            <li><a title="Linux 常用命令" href="15021597682775.html">Linux 常用命令</a></li>
+          
+            <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
+          
+            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
+          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -142,6 +150,14 @@
                     
                       <li class="side-title"><span>Nginx</span></li>
                         
+                          <li><a title="Linux 常用工具" href="15021598061539.html">Linux 常用工具</a></li>
+                        
+                          <li><a title="Linux 常用命令" href="15021597682775.html">Linux 常用命令</a></li>
+                        
+                          <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
+                        
+                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
+                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
@@ -188,20 +204,30 @@
 
 	
 		<div class="markdown-body">
-		<h1>京东平台数据化运营</h1>
+		<h1>Linux 常用工具</h1>
 
-		<p>个人认为，运营，其实就是研究人性的东西，研究怎么让用户购买。</p>
+		<h3 id="toc_0">rsync</h3>
 
-<p>此书结合日常的现象，场景作分析，确实更容易让人明白。</p>
+<p>remote sync 远程同步</p>
 
-<p>看完本书，两个惊叹：</p>
+<p>快速：第一次rsync会复制全部内容，之后只传输修改过的文件</p>
+
+<h5 id="toc_1">六种工作模式：</h5>
 
 <ol>
-<li>京东提供给商家的分析系统真是太完善了。</li>
-<li>经过多年的积累，京东对于用户体验，人性的分析已经非常到位透彻了。</li>
+<li>拷贝本地文件文件 <code>rsync -a /data /backup</code></li>
+<li>本地拷贝到远程服务器 <code>rsync -avz *.c foo:src</code></li>
+<li>远程服务器拷贝到本地 <code>rsync -avz foo:src/bar /data</code></li>
+<li>远程rsync服务器拷贝到本地 <code>rsync -av root@192.168.78.192::www /backup</code></li>
+<li>本地拷贝到远程rsync服务器 <code>rsync -av /backup root@192.168.78.192:www</code></li>
+<li>列出远程机器的文件列表 <code>rsync -v rsync://192.168.78.192/www</code></li>
 </ol>
 
-<p><img src="media/15016791064845/%E4%BA%AC%E4%B8%9C%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E5%8C%96%E8%BF%90%E8%90%A5.png" alt="京东平台数据化运营"/></p>
+<p>【注】A、B服务器都需要安装rsync</p>
+
+<h3 id="toc_2">crontab</h3>
+
+<p><img src="media/15021598061539/15021621913430.jpg" alt=""/></p>
 
 
 		</div>
