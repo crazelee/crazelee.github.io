@@ -47,7 +47,15 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="" href="15247382168452.html"></a></li>
+            <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+          
+            <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+          
+            <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+          
+            <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+          
+            <li><a title="事件" href="15247382168452.html">事件</a></li>
           
             <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
           
@@ -81,8 +89,6 @@
           
             <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
           
-            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -90,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
             <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
           
@@ -104,6 +112,8 @@
         <li class="divider"></li>
         <li><label>Golang</label></li>
 
+          
+            <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
           
@@ -157,6 +167,28 @@
           
 
       
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>大数据</label></li>
+
+          
+
+      
+        <li class="divider"></li>
+        <li><label>工具</label></li>
+
+          
+            <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+          
+
+      
       </ul>
     </aside>
 
@@ -174,7 +206,15 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="" href="15247382168452.html"></a></li>
+                          <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+                        
+                          <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+                        
+                          <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+                        
+                          <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+                        
+                          <li><a title="事件" href="15247382168452.html">事件</a></li>
                         
                           <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
                         
@@ -206,13 +246,13 @@
                         
                           <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
                         
-                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
                     
                       <li class="side-title"><span>读书笔记</span></li>
+                        
+                          <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
                         
@@ -225,6 +265,8 @@
 
                     
                       <li class="side-title"><span>Golang</span></li>
+                        
+                          <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
                         
@@ -270,6 +312,22 @@
                         
 
                     
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>大数据</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>工具</span></li>
+                        
+                          <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+                        
+
+                    
                   </ul>
                 </nav>
                 </div>
@@ -282,166 +340,58 @@
 
 	
 		<div class="markdown-body">
-		<h1>代码规范（clean-code-php）</h1>
+		<h1>单例模式 - Singleton</h1>
 
-		<p>【源】<a href="https://github.com/php-cpm/clean-code-php">https://github.com/php-cpm/clean-code-php</a></p>
+		<p><strong>意图：</strong>保证一个类仅有一个实例，并提供一个访问它的全局访问点。<br/>
+<strong>解决：</strong>一个全局使用的类频繁地创建与销毁</p>
 
-<h2 id="toc_0">一、介绍</h2>
+<h3 id="toc_0">类定义</h3>
 
-<h3 id="toc_1">变量</h3>
+<pre><code class="language-php">&lt;?php
 
-<h4 id="toc_2">使用有意义的变量名称</h4>
-
-<pre><code>$currentDate = $moment-&gt;format(&#39;y-m-d&#39;);
-</code></pre>
-
-<h4 id="toc_3">使用可搜索变量，不要突然出现数字</h4>
-
-<pre><code>class User
+final class Singleton
 {
-    const ACCESS_READ = 1;
-    const ACCESS_CREATE = 2;
-    const ACCESS_UPDATE = 4;
-    const ACCESS_DELETE = 8;
+    /**
+     * @var Singleton
+     */
+    private static $instance;
+
+    /**
+     * gets the instance via lazy initialization (created on first usage)
+     */
+    public static function getInstance(): Singleton
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
+
+    /**
+     * is not allowed to call from outside to prevent from creating multiple instances,
+     * to use the singleton, you have to obtain the instance from Singleton::getInstance() instead
+     */
+    private function __construct()
+    {
+    }
+
+    /**
+     * prevent the instance from being cloned (which would create a second instance of it)
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * prevent from being unserialized (which would create a second instance of it)
+     */
+    private function __wakeup()
+    {
+    }
 }
 
-if ($user-&gt;access &amp; User::ACCESS_UPDATE) {
-    // do edit ...
-}
 </code></pre>
-
-<h4 id="toc_4">使用可解释的变量</h4>
-
-<pre><code>$address = &#39;One Infinite Loop, Cupertino 95014&#39;;
-$cityZipCodeRegex = &#39;/^[^,]+,\s*(?&lt;city&gt;.+?)\s*(?&lt;zipCode&gt;\d{5})$/&#39;;
-preg_match($cityZipCodeRegex, $address, $matches);
-
-saveCityZipCode($matches[&#39;city&#39;], $matches[&#39;zipCode&#39;]);
-</code></pre>
-
-<h4 id="toc_5">避免嵌套过深</h4>
-
-<p>使用多重if/else，多层嵌套。可提前返回</p>
-
-<h4 id="toc_6">避免添加不需要的文本</h4>
-
-<p><strong>Bad:</strong></p>
-
-<pre><code>class Car
-{
-    public $carMake;
-    public $carModel;
-    public $carColor;
-
-    //...
-}
-</code></pre>
-
-<p><strong>Good:</strong></p>
-
-<pre><code>class Car
-{
-    public $make;
-    public $model;
-    public $color;
-
-    //...
-}
-</code></pre>
-
-<h4 id="toc_7">使用默认的参数值（PHP7）</h4>
-
-<p>使用类型提示，确保默认的参数值内容</p>
-
-<pre><code>function createMicrobrewery(string $breweryName = &#39;Hipster Brew Co.&#39;): void
-{
-    // ...
-}
-</code></pre>
-
-<h3 id="toc_8">比较</h3>
-
-<h4 id="toc_9">使用相同类型的比较</h4>
-
-<pre><code>$a = &#39;42&#39;;
-$b = 42;
-
-if ($a !== $b) {
-    // The expression is verified
-}
-</code></pre>
-
-<h3 id="toc_10">函数</h3>
-
-<h4 id="toc_11">函数变量个数：超过2个请更换变量类型</h4>
-
-<p><strong>Bad:</strong></p>
-
-<pre><code>function createMenu(string $title, string $body, string $buttonText, bool $cancellable): void
-{
-    // ...
-}
-</code></pre>
-
-<p><strong>Good:</strong></p>
-
-<pre><code>class MenuConfig
-{
-    public $title;
-    public $body;
-    public $buttonText;
-    public $cancellable = false;
-}
-
-$config = new MenuConfig();
-$config-&gt;title = &#39;Foo&#39;;
-$config-&gt;body = &#39;Bar&#39;;
-$config-&gt;buttonText = &#39;Baz&#39;;
-$config-&gt;cancellable = true;
-
-function createMenu(MenuConfig $config): void
-{
-    // ...
-}
-</code></pre>
-
-<h4 id="toc_12">函数名说明要干什么事情</h4>
-
-<p><img src="media/15179703597965/15227492200797.jpg" alt=""/></p>
-
-<h4 id="toc_13">不要使用标志来作为函数的参数</h4>
-
-<p><img src="media/15179703597965/15227499569108.jpg" alt=""/></p>
-
-<h4 id="toc_14">不要使用全局函数</h4>
-
-<p><img src="media/15179703597965/15227502849378.jpg" alt=""/></p>
-
-<h4 id="toc_15">封装条件</h4>
-
-<p><img src="media/15179703597965/15227509405487.jpg" alt=""/></p>
-
-<h4 id="toc_16">不要用相反的条件</h4>
-
-<p><img src="media/15179703597965/15227510159705.jpg" alt=""/></p>
-
-<h4 id="toc_17">删除无用的代码</h4>
-
-<p>不要预留不用的代码</p>
-
-<h3 id="toc_18">对象&amp;数据结构</h3>
-
-<h4 id="toc_19">使用对象封装你的行为</h4>
-
-<p><img src="media/15179703597965/15228052140369.jpg" alt=""/></p>
-
-<p><img src="media/15179703597965/15228052546588.jpg" alt=""/></p>
-
-<h4 id="toc_20">对象成员尽量private或protected</h4>
-
-<p><img src="media/15179703597965/15228054224967.jpg" alt=""/></p>
-
-<h3 id="toc_21">类</h3>
 
 
 		</div>

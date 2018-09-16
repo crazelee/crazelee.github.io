@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Nginx 负载均衡 - Craze-lee 技术点滴
+  客户端 - Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -47,7 +47,15 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="" href="15247382168452.html"></a></li>
+            <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+          
+            <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+          
+            <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+          
+            <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+          
+            <li><a title="事件" href="15247382168452.html">事件</a></li>
           
             <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
           
@@ -81,8 +89,6 @@
           
             <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
           
-            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -90,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
             <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
           
@@ -104,6 +112,8 @@
         <li class="divider"></li>
         <li><label>Golang</label></li>
 
+          
+            <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
           
@@ -157,6 +167,28 @@
           
 
       
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>大数据</label></li>
+
+          
+
+      
+        <li class="divider"></li>
+        <li><label>工具</label></li>
+
+          
+            <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+          
+
+      
       </ul>
     </aside>
 
@@ -174,7 +206,15 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="" href="15247382168452.html"></a></li>
+                          <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+                        
+                          <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+                        
+                          <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+                        
+                          <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+                        
+                          <li><a title="事件" href="15247382168452.html">事件</a></li>
                         
                           <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
                         
@@ -206,13 +246,13 @@
                         
                           <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
                         
-                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
                     
                       <li class="side-title"><span>读书笔记</span></li>
+                        
+                          <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
                         
@@ -225,6 +265,8 @@
 
                     
                       <li class="side-title"><span>Golang</span></li>
+                        
+                          <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
                         
@@ -270,6 +312,22 @@
                         
 
                     
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>大数据</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>工具</span></li>
+                        
+                          <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+                        
+
+                    
                   </ul>
                 </nav>
                 </div>
@@ -278,8 +336,61 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Nginx 负载均衡</h1>
+<h1>客户端</h1>
 
+<p>Redis 服务器结构中有一个clients链表，保存所有与服务器连接的客户端的状态结构</p>
+
+<pre><code class="language-c">struct redisServer {
+    // ...
+    // 一个链表，保存了所有客户端状态
+    list *clients;
+}
+</code></pre>
+
+<p><img src="media/15259460410925/15259462079220.jpg" alt=""/><br/>
+<img src="media/15259460410925/15259462213532.jpg" alt=""/></p>
+
+<h3 id="toc_0">客户端属性</h3>
+
+<pre><code class="language-c">typedef struct redisClient {
+    // ...
+    // 记录客户端正在使用的套接字描述符
+    // 伪客户端 值为-1，普通客户端为正常大于-1的整数
+    int fd;
+    
+    // 客户端的名字，默认nul
+    robj *name;
+    
+    // 标志(以下为一些例子)
+    // REDIS_MASTER: 客户端是一个主服务器
+    // REDIS_BLOCKED: 客户端正在被列表命令阻塞
+    // REIDS_MULTI | REDIS_DIRTY_CAS 客户端正在执行事务，但事务的安全性已被破坏
+    // REDIS_SLAVE | REDIS_PRE_PSYNC 客户端是个从服务器，并且版本低于Redis 2.8
+    // REDIS_LUA_CLIENT | REDIS_FORCE_AOF | REDIS_FORCE_REPL 
+    // 用于执行LUA脚本包含的Redis命令的伪客户端，强制服务器将当前执行的命令写入AOF文件，并复制给从服务器
+    int flags;
+    
+    // 输入缓冲区: 用于保存客户端发送是命令请求
+    sds querybuf;
+    
+    // 命令参数
+    robj **argv;
+    // 命令个数
+    int argc;
+    
+    // 身份认证：成功为1， 失败为0
+    int authenticated;
+    
+    // 创建客户端的时间
+    time_t ctime;
+    
+    // 客户端与服务器最后一次交互时间
+    time_t lastinteraction;
+    
+    // 记录输出缓冲区第一次到啊软性限制的时间
+    time_t obuf_soft_limit_reached_time;
+}
+</code></pre>
 
 
 </div>
@@ -291,15 +402,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15021597491039.html"  title="Previous Post: PHP-FPM 运行原理">&laquo; PHP-FPM 运行原理</a>
+	        <a href="15259474176941.html"  title="Previous Post: 服务器">&laquo; 服务器</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15016791064845.html" 
-	        title="Next Post: 京东平台数据化运营">京东平台数据化运营 &raquo;</a>
+	        <a href="15248242433758.html" 
+	        title="Next Post: 原型模式 - Prototype">原型模式 - Prototype &raquo;</a>
 	    
 	</div>
   </div>
@@ -315,7 +426,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15021597375355.html';
+		var currentURL = '15259460410925.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

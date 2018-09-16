@@ -47,7 +47,15 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="" href="15247382168452.html"></a></li>
+            <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+          
+            <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+          
+            <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+          
+            <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+          
+            <li><a title="事件" href="15247382168452.html">事件</a></li>
           
             <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
           
@@ -81,8 +89,6 @@
           
             <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
           
-            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -90,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
             <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
           
@@ -104,6 +112,8 @@
         <li class="divider"></li>
         <li><label>Golang</label></li>
 
+          
+            <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
           
@@ -157,6 +167,28 @@
           
 
       
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>大数据</label></li>
+
+          
+
+      
+        <li class="divider"></li>
+        <li><label>工具</label></li>
+
+          
+            <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+          
+
+      
       </ul>
     </aside>
 
@@ -174,7 +206,15 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="" href="15247382168452.html"></a></li>
+                          <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+                        
+                          <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+                        
+                          <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+                        
+                          <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+                        
+                          <li><a title="事件" href="15247382168452.html">事件</a></li>
                         
                           <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
                         
@@ -206,13 +246,13 @@
                         
                           <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
                         
-                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
                     
                       <li class="side-title"><span>读书笔记</span></li>
+                        
+                          <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
                         
@@ -225,6 +265,8 @@
 
                     
                       <li class="side-title"><span>Golang</span></li>
+                        
+                          <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
                         
@@ -270,6 +312,22 @@
                         
 
                     
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>大数据</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>工具</span></li>
+                        
+                          <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+                        
+
+                    
                   </ul>
                 </nav>
                 </div>
@@ -282,146 +340,125 @@
 
 	
 		<div class="markdown-body">
-		<h1>composer - 依赖管理</h1>
+		<h1>数据库</h1>
 
-		<h4 id="toc_0">composer.json - 声明文件</h4>
+		<h3 id="toc_0">一、数据库结构</h3>
 
-<pre><code>{
-    &quot;require&quot;: {
-        &quot;monolog/monolog&quot;: &quot;1.2.*&quot;
-    }
-}
+<p>Redis服务器将所有数据库都保存在服务器状态的db数组中</p>
+
+<pre><code class="language-c">struct redisServer {
+// ...
+// 一个数组，保存服务器中的所有数据库
+redisDb *db;
+// ...
+// 服务器的数据库数量（默认为16）
+int dbnum;
+};
 </code></pre>
 
-<pre><code>composer install 
+<p><img src="media/15246286049315/15246287458830.jpg" alt=""/></p>
+
+<p>默认Redis客户端的目标数据库为0号数据库，客户端可以通过select命令切换目标数据库</p>
+
+<pre><code class="language-redis">redis&gt; set msg &quot;hello&quot;
+redis&gt; get msg
+&quot;hello&quot;
+redis&gt; select 2
+OK
+redis&gt;get msg
+(nil)
 </code></pre>
+
+<p>客户端</p>
+
+<pre><code class="language-c">typedef struct redisClient {
+    // ...
+    // 记录客户端当前正在使用的数据库
+    // 指向redisServer.db数组的其中一个元素
+    redisDb *db;
+
+}redisClient;
+</code></pre>
+
+<p><img src="media/15246286049315/15246292964469.jpg" alt=""/></p>
+
+<h3 id="toc_1">数据库键空间</h3>
+
+<pre><code class="language-c">typedef struct redisDb{
+    // ... 
+    // 数据库键空间，保存数据库中的所有键值对
+    dict *dict;
+    
+}redisDb;
+</code></pre>
+
+<p>数据存储在dict字典中</p>
+
+<pre><code class="language-redis">redis&gt;set message &quot;hello&quot;
+redis&gt;rpush alphabet &quot;a&quot; &quot;b&quot; &quot;c&quot;
+redis&gt;hset book name &quot;Redis in Action&quot;
+redis&gt;hset book author &quot;Josiah L. Carlson&quot;
+redis&gt;hset book publisher &quot;Manning&quot;
+</code></pre>
+
+<p><img src="media/15246286049315/15246298293232.jpg" alt=""/></p>
+
+<h3 id="toc_2">过期策略</h3>
+
+<p>使用expire等命令设置键值的过期时间后，会在数据库字典存储过期键值</p>
+
+<p><img src="media/15246286049315/15246377009747.jpg" alt=""/></p>
+
+<p>惰性删除与定时删除结合</p>
+
+<h4 id="toc_3">惰性删除策略</h4>
+
+<p>读写数据库都会调用expireIfNeeded函数进行检查<br/>
+即使用的时候检查是否已过期，如果已过期则删除：数据字典里的键以及过期字典里的键</p>
+
+<p><img src="media/15246286049315/15246377777265.jpg" alt=""/></p>
+
+<h4 id="toc_4">定时删除策略</h4>
+
+<p>redis服务器周期性操作serverCron函数，分多次遍历服务器中的各个数据库，从expires字典中<strong>随机检查一部分键的过期情况</strong>，并删除其中的过期键</p>
+
+<p><img src="media/15246286049315/15246380243999.jpg" alt=""/></p>
+
+<h3 id="toc_5">RDB、AOF和复制功能对过期键的处理</h3>
+
+<h4 id="toc_6">RDB文件</h4>
+
+<p><strong>1. 生成RDB文件</strong><br/>
+执行save、bgsave命令会创建新的RDB文件，程序会对数据库中键进行检查，已过期的不会保存在文件中。</p>
+
+<p><strong>2. 载入RDB文件</strong><br/>
+启动Redis服务器是，如果开启了RDB功能，会对RDB进行载入：<br/>
+- 以主服务器模式运行，载入文件时<em>会将已过期的键自动忽略</em>；<br/>
+- 以从服务器模式运行，载入时<em>会全部载入到数据库中</em>。不过主从服务器进行数据同步时，会将从服务器的数据先全部清空</p>
+
+<h4 id="toc_7">AOF文件</h4>
+
+<p>以AOF持久化模式运行的，如果某个键已过期，被惰性删除或定期删除后，程序会向AOF文件追加一条DEL命令，来显示记录该键已被删除。</p>
+
+<p>例子：客户端想要访问GET message，但是message是过期键，则：</p>
 
 <ol>
-<li>下载依赖库，还有一个自动加载文件（vendor/autoload.php），该文件加载了 Composer 下载的库中所有的类文件。</li>
-<li>将创建一个 composer.lock 文件到你项目的根目录中。</li>
+<li>从数据库中删除message键；</li>
+<li>追加一条 DEL message 命令到AOF文件；</li>
+<li>向执行GET命令的客户端返回空回复。</li>
 </ol>
 
-<h4 id="toc_1">composer.lock - 锁文件</h4>
+<h3 id="toc_8">复制模式</h3>
 
-<p>install 命令会检查锁文件是否存在，如果存在，它将下载指定的版本（忽略 composer.json 文件中的定义）。</p>
+<p>当服务器运行在复制模式下，从服务器的过期键删除操作由主服务器控制。</p>
 
-<p>如果你的依赖更新了新的版本，你将不会获得任何更新。此时要更新你的依赖版本请使用 update 命令。这将获取最新匹配的版本（根据你的 composer.json 文件）并将新版本更新进锁文件。</p>
+<ol>
+<li>主服务器删除过期键之后，显式地向所有从服务器发送DEL命令</li>
+<li>从服务器执行客户端的读命令时，即使碰到过期键也不会删除，而是会像正常键一样返回</li>
+<li>从服务器只有接收到主服务器的DEL命令才会删除</li>
+</ol>
 
-<h4 id="toc_2">创建自己的包</h4>
-
-<p><strong>开发你的类：Hello</strong></p>
-
-<pre><code>&lt;?php
-namespace Hello;
-
-class SayHello
-{
-    public static function world()
-    {
-        return &#39;Hello World!&#39;;
-    }
-}
-</code></pre>
-
-<p><strong>创建composer.json 文件</strong></p>
-
-<pre><code>{
-    &quot;name&quot;: &quot;crazelee/hello&quot;,
-    &quot;description&quot;: &quot;echo hello world.&quot;,
-    &quot;license&quot;: &quot;MIT&quot;,
-    &quot;authors&quot;: [
-        {
-            &quot;name&quot;: &quot;crazelee&quot;,
-            &quot;email&quot;: &quot;crazelee@hotmail.com&quot;
-        }
-    ],
-    &quot;minimum-stability&quot;: &quot;dev&quot;,
-    &quot;require&quot;: {},
-    &quot;autoload&quot;: {
-        &quot;psr-4&quot;: {
-            &quot;Hello\\&quot;: &quot;src/&quot;
-        }
-    }
-}
-</code></pre>
-
-<p>含自动加载机制</p>
-
-<p><strong>加载依赖</strong><br/>
-<code>composer install</code></p>
-
-<p><img src="media/15123491494569/15123757447980.jpg" alt=""/></p>
-
-<p><strong>测试类： test.php</strong></p>
-
-<pre><code>&lt;?php
-require_once __DIR__ . &#39;/vendor/autoload.php&#39;;  
-
-use Hello\SayHello;  
-echo SayHello::world();
-</code></pre>
-
-<p><img src="media/15123491494569/15123758345241.jpg" alt=""/></p>
-
-<p><strong>测试成功，提交到github</strong></p>
-
-<p><img src="media/15123491494569/15123758963486.jpg" alt=""/></p>
-
-<p><strong>提交到package镜像</strong><br/>
-<a href="https://packagist.org/packages/crazelee/hello#dev-master">地址：https://packagist.org/packages/crazelee/hello#dev-master</a></p>
-
-<p><img src="media/15123491494569/15123744810164.jpg" alt=""/></p>
-
-<p><img src="media/15123491494569/15123745083872.jpg" alt=""/></p>
-
-<p><strong>使用</strong><br/>
-新建个站点目录，编辑composer.json文件，然后composer install</p>
-
-<pre><code>{
-    &quot;require&quot;: {
-        &quot;crazelee/hello&quot;:&quot;dev-master&quot;
-    }
-}
-</code></pre>
-
-<h4 id="toc_3">镜像</h4>
-
-<p>公有镜像package + 搭建私有镜像 satis</p>
-
-<p><img src="media/15123491494569/15123506699429.png" alt=""/></p>
-
-<p><a href="http://www.cnblogs.com/maxincai/p/5308284.html">服务器配置</a></p>
-
-<h4 id="toc_4">搭建satis</h4>
-
-<pre><code>{
-  &quot;name&quot;: &quot;My Repository&quot;,
-  &quot;homepage&quot;: &quot;http://packages.example.org&quot;,
-  &quot;repositories&quot;: [
-    { &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;https://github.com/mycompany/privaterepo&quot; },
-    { &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://svn.example.org/private/repo&quot; },
-  ],
-  &quot;require-all&quot;: true
-}
-</code></pre>
-
-<p><img src="media/15123491494569/15123764035730.jpg" alt=""/></p>
-
-<h3 id="toc_5">使用satis</h3>
-
-<p>composer.json 配置请求仓库地址为本地</p>
-
-<pre><code>{
-    &quot;repositories&quot;: [
-      { &quot;type&quot;: &quot;composer&quot;, &quot;url&quot;: &quot;http://packages.dev.com/&quot; }
-    ],
-    &quot;require&quot;: {
-        &quot;company/package&quot;: &quot;1.2.0&quot;,
-        &quot;company/package2&quot;: &quot;1.5.2&quot;,
-        &quot;company/package3&quot;: &quot;dev-master&quot;
-    }
-}
-</code></pre>
+<p><img src="media/15246286049315/15246392564789.jpg" alt=""/></p>
 
 
 		</div>

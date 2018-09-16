@@ -47,7 +47,15 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="" href="15247382168452.html"></a></li>
+            <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+          
+            <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+          
+            <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+          
+            <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+          
+            <li><a title="事件" href="15247382168452.html">事件</a></li>
           
             <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
           
@@ -81,8 +89,6 @@
           
             <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
           
-            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -90,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
             <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
           
@@ -104,6 +112,8 @@
         <li class="divider"></li>
         <li><label>Golang</label></li>
 
+          
+            <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
           
@@ -157,6 +167,28 @@
           
 
       
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>大数据</label></li>
+
+          
+
+      
+        <li class="divider"></li>
+        <li><label>工具</label></li>
+
+          
+            <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+          
+
+      
       </ul>
     </aside>
 
@@ -174,7 +206,15 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="" href="15247382168452.html"></a></li>
+                          <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+                        
+                          <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+                        
+                          <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+                        
+                          <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+                        
+                          <li><a title="事件" href="15247382168452.html">事件</a></li>
                         
                           <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
                         
@@ -206,13 +246,13 @@
                         
                           <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
                         
-                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
                     
                       <li class="side-title"><span>读书笔记</span></li>
+                        
+                          <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
                         
@@ -225,6 +265,8 @@
 
                     
                       <li class="side-title"><span>Golang</span></li>
+                        
+                          <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
                         
@@ -270,6 +312,22 @@
                         
 
                     
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>大数据</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>工具</span></li>
+                        
+                          <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+                        
+
+                    
                   </ul>
                 </nav>
                 </div>
@@ -282,153 +340,41 @@
 
 	
 		<div class="markdown-body">
-		<h1>自动加载</h1>
+		<h1>第二章：用户代码的执行</h1>
 
-		<blockquote>
-<p>源自：<a href="https://www.zybuluo.com/phper/note/66447">https://www.zybuluo.com/phper/note/66447</a></p>
-</blockquote>
+		<p>当用户代码输入给PHP内核去执行的时候， PHP内核会对PHP代码进行<strong>词法分析</strong>和<strong>语法分析</strong>， 词法分析是把PHP代码分割成一个个的“单元”（TOKEN）， 语法分析则将这些“单元”转化为Zend Engine可执行的操作。 然后PHP内部的Zend Engine对这些操作进行顺次的执行。 Zend Engine是PHP内核的核心部分，负责最终操作的执行和结果的返回， 可以理解成为PHP内核中的“发动机”。5</p>
 
-<h3 id="toc_0">1. 自动加载原理及__autoload的使用</h3>
+<p><img src="media/15228274989540/15228277071244.png" alt=""/></p>
 
-<p>主要是实现类的自动加载，不再需要逐个文件的引入操作。可以看到下方，new class的时候会自动调用__autoload方法</p>
+<h2 id="toc_0">第一节：生命周期和Zend引擎</h2>
 
-<p>index.php</p>
+<h4 id="toc_1">一切的开始: SAPI接口</h4>
 
-<pre><code class="language-php">define(&#39;ROOT_PATH&#39;, dirname(_file_) . &#39;/&#39;);
-define(&#39;CORE_PATH&#39;, ROOT_PATH . &#39;core/&#39;);
+<p>SAPI(Server Application Programming Interface)指的是PHP具体应用的编程接口</p>
 
-// 创建对象
-$db = new DB();
+<p>脚本执行的开始都是以SAPI接口实现开始的。只是不同的SAPI接口实现会完成他们特定的工作</p>
 
-// 静态方法直接调用
-Info::test();
+<h5 id="toc_2">开始和结束</h5>
 
-function __autoload($className)
-{
-    require CORE_PATH . $className . &#39;.class.php&#39;;
-}
-</code></pre>
+<p>PHP开始执行的两个主要阶段：处理请求前的开始阶段；请求之后的结束阶段。<br/>
+<img src="media/15228274989540/15231522593143.jpg" alt=""/></p>
 
-<p>./core/DB.class.php</p>
-
-<pre><code class="language-php">class Db
-{
-    
-    function __construct()
-    {
-        echo &#39;Hello DB&#39;;
-    }
-}
-</code></pre>
-
-<h3 id="toc_1">2. spl_autoload_register的使用</h3>
-
-<p>小项目__autoload方法基本能实现，如果类在多个文件夹，就需要<strong>spl_autoload_register</strong><br/>
-执行效率更高，更灵活</p>
-
-<p><img src="media/14853373780889/14853381082801.jpg" alt=""/></p>
-
-<pre><code class="language-php">define(&#39;ROOT_PATH&#39;, dirname(__FILE__) . &#39;/&#39;);
-define(&#39;CORE_PATH&#39;, ROOT_PATH . &#39;core/&#39;);
-define(&#39;LIB_PATH&#39;,  ROOT_PATH . &#39;lib/&#39;);
-
-function load1($className)
-{
-    echo &#39;core: &#39;;
-    include_once CORE_PATH . $className . &#39;.class.php&#39;;
-    
-}
-
-function load2($className)
-{
-    echo &#39;lib: &#39;;
-    include_once LIB_PATH . $className . &#39;.class.php&#39;;
-}
-
-spl_autoload_register(&#39;load1&#39;);
-spl_autoload_register(&#39;load2&#39;);
-// spl_autoload_register使用时，__autoload会无效，有时候，我们希望它继续有效，就可以也将它注册进来，就可以继续使用。
-spl_autoload_register(&#39;__autoload&#39;);
-
-// core 目录创建对象
-$db = new DB();
-
-// 静态方法直接调用
-Info::test();
-
-// lib 目录创建对象
-$redis = new Redis();
-</code></pre>
-
-<p>分析如下：<br/>
-1. new DB的时候，就按照注册顺序，先去找load1()函数了，发现找到了，就停止了<br/>
-2. new Info的时候，先是安装注册顺序，先找load1(), 发现没找到，就去load2()里面去找，还是没这个文件，就去__autoload()函数里找，再输出Hello Info</p>
-
-<h3 id="toc_2">3. spl_autoload_register配合namespace</h3>
-
-<p>Redis类</p>
-
-<pre><code class="language-php">&lt;?php
-/**
-* Lib Redis
-*/
-
-namespace Lib;
-
-class Redis
-{
-    
-    function __construct()
-    {
-        echo &#39;Hello Redis&#39;;
-    }
-
-    public static function test()
-    {
-        echo &#39;Redis::test&#39;;
-    }
-}
-</code></pre>
-
-<p>自动加载类<br/>
-AutoLoading\loading</p>
-
-<pre><code class="language-php">&lt;?php
-
-namespace AutoLoading;
-
-class loading
-{
-    public static function autoload($className)
-    {
-
-        $fileName = str_replace(&#39;\\&#39;, DIRECTORY_SEPARATOR, DIR . &#39;\\&#39;. $className . &#39;.class.php&#39;);
-
-        if (is_file($fileName)) {
-            include_once $fileName;
-        } else {
-            echo $fileName . &#39; is not exist &#39;; die;
-        }
-    }
-}
-</code></pre>
-
-<p>主函数<br/>
-index.php</p>
-
-<pre><code class="language-php">define(&#39;DIR&#39;, dirname(__FILE__));
-
-require DIR . &#39;/loading.php&#39;;
-
-
-spl_autoload_register(&quot;\\AutoLoading\\loading::autoload&quot;);
-
-
-Lib\Redis::test();
-</code></pre>
+<p><img src="media/15228274989540/15231526723736.jpg" alt=""/></p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
 	
 
   

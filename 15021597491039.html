@@ -47,7 +47,15 @@
         <li><label>Redis</label></li>
 
           
-            <li><a title="" href="15247382168452.html"></a></li>
+            <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+          
+            <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+          
+            <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+          
+            <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+          
+            <li><a title="事件" href="15247382168452.html">事件</a></li>
           
             <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
           
@@ -81,8 +89,6 @@
           
             <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
           
-            <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-          
             <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
           
 
@@ -90,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
             <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
           
@@ -104,6 +112,8 @@
         <li class="divider"></li>
         <li><label>Golang</label></li>
 
+          
+            <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
           
             <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
           
@@ -157,6 +167,28 @@
           
 
       
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>大数据</label></li>
+
+          
+
+      
+        <li class="divider"></li>
+        <li><label>工具</label></li>
+
+          
+            <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
+          
+
+      
       </ul>
     </aside>
 
@@ -174,7 +206,15 @@
                     
                       <li class="side-title"><span>Redis</span></li>
                         
-                          <li><a title="" href="15247382168452.html"></a></li>
+                          <li><a title="Sentinel" href="15268841093287.html">Sentinel</a></li>
+                        
+                          <li><a title="复制（多机数据库的实现）" href="15266261103630.html">复制（多机数据库的实现）</a></li>
+                        
+                          <li><a title="服务器" href="15259474176941.html">服务器</a></li>
+                        
+                          <li><a title="客户端" href="15259460410925.html">客户端</a></li>
+                        
+                          <li><a title="事件" href="15247382168452.html">事件</a></li>
                         
                           <li><a title="AOF(Append Only File)持久化" href="15246656097152.html">AOF(Append Only File)持久化</a></li>
                         
@@ -206,13 +246,13 @@
                         
                           <li><a title="PHP-FPM 运行原理" href="15021597491039.html">PHP-FPM 运行原理</a></li>
                         
-                          <li><a title="Nginx 负载均衡" href="15021597375355.html">Nginx 负载均衡</a></li>
-                        
                           <li><a title="Nginx的rewrite规则" href="14968966431769.html">Nginx的rewrite规则</a></li>
                         
 
                     
                       <li class="side-title"><span>读书笔记</span></li>
+                        
+                          <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
                         
@@ -225,6 +265,8 @@
 
                     
                       <li class="side-title"><span>Golang</span></li>
+                        
+                          <li><a title="Hello world, GO!" href="15322326979696.html">Hello world, GO!</a></li>
                         
                           <li><a title="Mac Golang环境安装 & Sublime配置" href="15002985849637.html">Mac Golang环境安装 & Sublime配置</a></li>
                         
@@ -267,6 +309,22 @@
 
                     
                       <li class="side-title"><span>内功</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="微服务架构" href="15295501297008.html">微服务架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>大数据</span></li>
+                        
+
+                    
+                      <li class="side-title"><span>工具</span></li>
+                        
+                          <li><a title="Git 技能" href="15364616629932.html">Git 技能</a></li>
                         
 
                     
@@ -346,7 +404,39 @@
 
 <h3 id="toc_8">四、请求流程</h3>
 
-<p>未完待续...</p>
+<pre><code>www.example.com
+        |
+        |
+WEB服务器：Nginx
+        |
+        |
+Nginx配置的location
+将请求路由到www.example.com/index.php
+        |
+        |
+加载nginx的fast-cgi模块
+        |
+        |
+fast-cgi监听127.0.0.1:9000地址
+        |
+        |
+www.example.com/index.php准发到达127.0.0.1:9000
+        |
+        |
+php-fpm master进程监听127.0.0.1:9000
+        |
+        |
+php-fpm 接收到请求，启用worker进程处理请求
+        |
+        |
+php-fpm 处理完请求，返回给nginx
+        |
+        |
+nginx将结果通过http返回给浏览器
+        
+</code></pre>
+
+<p>【源】<a href="https://segmentfault.com/a/1190000007322358">https://segmentfault.com/a/1190000007322358</a></p>
 
 
 </div>
@@ -365,8 +455,8 @@
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15021597375355.html" 
-	        title="Next Post: Nginx 负载均衡">Nginx 负载均衡 &raquo;</a>
+	        <a href="15016791064845.html" 
+	        title="Next Post: 京东平台数据化运营">京东平台数据化运营 &raquo;</a>
 	    
 	</div>
   </div>
