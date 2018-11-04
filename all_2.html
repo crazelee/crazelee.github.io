@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Craze-lee 技术点滴
+  Code & Economics
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
- <link href="atom.xml" rel="alternate" title="Craze-lee 技术点滴" type="application/atom+xml">
+ <link href="atom.xml" rel="alternate" title="Code & Economics" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
 
@@ -29,13 +29,13 @@
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 <div id="header">
-    <h1><a href="index.html">Craze-lee 技术点滴</a></h1>
+    <h1><a href="index.html">Code & Economics</a></h1>
 </div>
 
 </nav>
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Craze-lee 技术点滴</span>
+    <span> &nbsp; Code & Economics</span>
   </a>
 </nav>
 
@@ -96,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
           
             <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
@@ -252,6 +254,8 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
+                          <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
+                        
                           <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
@@ -340,143 +344,56 @@
 
 	
 		<div class="markdown-body">
-		<h1>服务器</h1>
+		<h1>抽象工厂模式 - Abstract Factory</h1>
 
-		<h2 id="toc_0">一、命令请求的执行过程</h2>
+		<p>超级工厂模式，生产其他工厂，适合做个路由</p>
 
-<pre><code>redis&gt; SET KEY VALUE
-OK
-</code></pre>
+<h3 id="toc_0">抽象工厂类定义</h3>
 
-<ol>
-<li>客户端向服务器发送命令SET KEY VALUE</li>
-<li>服务器接收并处理命令，在数据库中进行操作，并产生命令回复OK</li>
-<li>服务器将命令回复OK发送给客户端</li>
-<li>客户单接收服务器返回的回复OK，并将这个回复打印给用户</li>
-</ol>
+<pre><code class="language-php">&lt;?php
+ 
+class AbstractFactory
+{
+    public static function build($type=&#39;&#39;, $country)
+    {
+        if ($type == &#39;&#39;) {
+            throw new Exception(&quot;Invalid Type&quot;);
+        }
 
-<h3 id="toc_1">发送命令请求</h3>
+        $className = &quot;\\Api\\P{$country}\\{$type}&quot;;
+        if (! class_exists($className)) {
+            $className = &quot;\\Lib\\$type\\General{$country}&quot;;
+        }
 
-<p>通过连接的套接字，按协议格式发送给服务器</p>
-
-<p><img src="media/15259474176941/15259480024098.jpg" alt=""/></p>
-
-<h3 id="toc_2">读取命令请求</h3>
-
-<ol>
-<li>按协议格式读取命令请求，并将其保存到客户端状态的输入缓存区里。</li>
-<li>对输入缓冲区的命令进行分析，提取命令中包含的命令参数、个数，分别保存在argv和argc里</li>
-<li>调用命令执行器，执行客户端指定的命令。</li>
-</ol>
-
-<p><img src="media/15259474176941/15259482501249.jpg" alt=""/><br/>
-<img src="media/15259474176941/15259482606000.jpg" alt=""/></p>
-
-<h3 id="toc_3">命令执行器（1）：查找命令</h3>
-
-<p>根据客户端状态的argv[0]参数，在命令表中查找参数所指定的命令，并将命令保存在客户端状态的cmd属性里面。 大小写无关（SET、set、Set 都有效）</p>
-
-<p><img src="media/15259474176941/15259488056749.jpg" alt=""/></p>
-
-<h3 id="toc_4">命令执行器（2）：执行预备操作</h3>
-
-<p>到目前为止，已将需要执行的命令实现函数(cmd)、参数(argv)、参数个数(argc)都收集齐了，但在执行命令前，需要进行一些预备操作：</p>
-
-<ol>
-<li>检查客户端状态的cmd指针是否指向NULL，是的话不在执行后续步骤，向客户端返回一个错误</li>
-<li>检查客户端cmd属性指向的redisCommand结构的arity属性，检查参数个数是否正确。</li>
-<li>检查客户端是否已通过身份验证</li>
-<li>如果服务器打开了maxmemory功能，先检查服务器的内存占用情况，并在有需要时进行内存回收</li>
-<li>如果服务器上一次执行BGSAVE命令出错，并且服务器打开了stop-writes-on-bjsave-error功能，命令是写命令的话会拒绝执行</li>
-<li>等等其他</li>
-</ol>
-
-<h3 id="toc_5">命令执行器（3）：调用命令实现函数</h3>
-
-<pre><code>// client 是指向客户端状态的指针
-client-&gt;cmd-&gt;proc(client)
-</code></pre>
-
-<p>被调用的命令实现函数会执行指定的操作，并产生相应的命令恢复，这些回复会被保存在客户端状态的输出缓冲区里（buf属性和reply属性）</p>
-
-<p><img src="media/15259474176941/15260106847782.jpg" alt=""/></p>
-
-<h3 id="toc_6">命令执行器（4）：执行后续工作</h3>
-
-<ol>
-<li>如果开启了慢查询日志，检查是否需要为刚刚执行完的命令添加一条新的慢查询日志</li>
-<li>如果开启了AOF，将刚执行的命令写到AOF缓冲区里</li>
-<li>如果有从服务器，会将改命令写给从服务器</li>
-</ol>
-
-<h3 id="toc_7">将命令回复发送给客户端</h3>
-
-<p>命令实现函数会将回复保存在客户端的输出缓冲区里，并为客户端的套接字关联命令回复处理器，将输出缓冲区的命令发送给客户端，并清空客户端状态的输出缓冲区</p>
-
-<h3 id="toc_8">客户端接收并打印命令回复</h3>
-
-<pre><code>redis&gt; SET KEY VALUE
-OK
-</code></pre>
-
-<p>客户端接收到&quot;+OK\r\n&quot;  转换为 &quot;OK\n&quot;</p>
-
-<p><img src="media/15259474176941/15260109532001.jpg" alt=""/></p>
-
-<h2 id="toc_9">二、serverCron函数</h2>
-
-<p>serverCron默认每隔100毫秒执行一次，<strong>负责管理服务器的资源</strong></p>
-
-<h3 id="toc_10">更新服务器时间缓存</h3>
-
-<pre><code class="language-c">struct redisServer {
-    // 保存了秒级精度的系统当前unix时间
-    time_t unixtime;
-    
-    // 毫秒级
-    time_t long mstime;
+        return new $className;
+    }
 }
 </code></pre>
 
-<h3 id="toc_11">更新LRU时钟</h3>
+<p>结构</p>
 
-<p>每个Redis对象都有一个LRU属性，保存了对象最后一次访问的时间。<br/>
-serverCron默认每10秒一次的频率更新lruclock属性</p>
+<p><img src="media/15247943834549/15248116805399.jpg" alt=""/></p>
 
-<h3 id="toc_12">更新服务器每秒执行的命令次数</h3>
+<h3 id="toc_1">使用</h3>
 
-<p>服务器状态中的stat_peak_memory记录服务器的内存峰值大小，如果检测到比记录值大则更新</p>
-
-<pre><code class="language-c">struct redisServer{
-    // 已使用内存峰值
-    size_t stat_peak_memory;
-}
+<pre><code class="language-php">// Creating new Sedan Car
+$sedan = AbstractFactory::build(&#39;sedan&#39;, &#39;china&#39;);
+ 
+// Creating new giant Bike
+$suv = AbstractFactory::build(&#39;giant&#39;, &#39;germany&#39;);
 </code></pre>
-
-<h3 id="toc_13">管理客户端资源</h3>
-
-<p>serverCron函数每次执行都会调用clientsCron函数，进而检查：</p>
-
-<ol>
-<li>如果客户端与服务器的链接已超时（长时间没有交互），释放这个客户端</li>
-</ol>
-
-<h3 id="toc_14">管理数据库资源</h3>
-
-<p>serverCron函数每次执行都会调用databasesCron函数，检查数据库过期键，有需要时，对字典进行收缩操作</p>
-
-<h3 id="toc_15">执行持久化操作</h3>
-
-<p><img src="media/15259474176941/15263941744461.jpg" alt=""/></p>
-
-<h2 id="toc_16">初始化服务器</h2>
-
-<h3 id="toc_17">初始化服务器状态结构</h3>
-
-<p>创建一个struct redisServer类型的实例变量server作为服务器的状态，并为结构中的各个属性设置默认值</p>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
 	
 
  

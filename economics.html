@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  PHP-FPM 运行原理 - Code & Economics
+  Craze-lee 技术点滴
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
- <link href="atom.xml" rel="alternate" title="Code & Economics" type="application/atom+xml">
+ <link href="atom.xml" rel="alternate" title="Craze-lee 技术点滴" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
 
@@ -29,13 +29,13 @@
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 <div id="header">
-    <h1><a href="index.html">Code & Economics</a></h1>
+    <h1><a href="index.html">Craze-lee 技术点滴</a></h1>
 </div>
 
 </nav>
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Code & Economics</span>
+    <span> &nbsp; Craze-lee 技术点滴</span>
   </a>
 </nav>
 
@@ -96,8 +96,6 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
-          
-            <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
           
             <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
@@ -254,8 +252,6 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
-                          <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
-                        
                           <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
@@ -339,148 +335,32 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>PHP-FPM 运行原理</h1>
+ 
 
-<h3 id="toc_0">一、Common Gateway Interface 通用网关接口</h3>
 
-<p>cgi是外部应用程序（cgi程序）与web服务器之间的接口标准</p>
+    
+        <div class="markdown-body">
+        <h1>Git 技能</h1>
 
-<p>工作原理<br/>
-<img src="media/15021597491039/15101933219088.jpg" alt=""/></p>
-
-<h3 id="toc_1">二、演变过程</h3>
-
-<h4 id="toc_2">阶段一: cgi</h4>
-
-<p>每接收到一个请求，都会fork一个cgi请求，结束后kill；如果有100个请求，就需要fork、kill php-cgi 100次</p>
-
-<h4 id="toc_3">阶段二：fast-cgi</h4>
-
-<p>处理完后不会kill，保留进程，可以一次处理多个请求</p>
-
-<h4 id="toc_4">阶段三：php-fpm</h4>
-
-<p>php-fast-cgi Process Manager 是FastCGI的实现，并提供进程管理</p>
-
-<p>两种进程：</p>
-
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>个数</th>
-<th>作用</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><strong>master</strong></td>
-<td>一个</td>
-<td>监听端口，接收Web Server的请求</td>
-</tr>
-<tr>
-<td><strong>worker</strong></td>
-<td>多个</td>
-<td>每个进程内嵌一个PHP解释器，PHP代码真正执行的地方</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_5">三、nginx + php-fpm协作</h3>
-
-<h5 id="toc_6">nginx 处理http请求，反向代理设置(nginx.conf)</h5>
-
-<pre><code>server{
-    ...
-    location ~ \.php$ {
-        include /usr/local/webserver/nginx/fastcgi.conf;  # nginx的fastcgi模块
-        fastcgi-pass 127.0.0.1:9000;
-    }
-}
-</code></pre>
-
-<h5 id="toc_7">php-fpm配置(php-fpm.conf)</h5>
-
-<pre><code>listen=127.0.0.1:9000
-</code></pre>
-
-<h3 id="toc_8">四、请求流程</h3>
-
-<pre><code>www.example.com
-        |
-        |
-WEB服务器：Nginx
-        |
-        |
-Nginx配置的location
-将请求路由到www.example.com/index.php
-        |
-        |
-加载nginx的fast-cgi模块
-        |
-        |
-fast-cgi监听127.0.0.1:9000地址
-        |
-        |
-www.example.com/index.php准发到达127.0.0.1:9000
-        |
-        |
-php-fpm master进程监听127.0.0.1:9000
-        |
-        |
-php-fpm 接收到请求，启用worker进程处理请求
-        |
-        |
-php-fpm 处理完请求，返回给nginx
-        |
-        |
-nginx将结果通过http返回给浏览器
         
-</code></pre>
 
-<p>【源】<a href="https://segmentfault.com/a/1190000007322358">https://segmentfault.com/a/1190000007322358</a></p>
+        </div>
+    
 
+ 
+    
 
-</div>
+ 
+    
 
-<br /><br />
-<hr />
+ 
+    
 
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="15021597682775.html"  title="Previous Post: Linux 常用命令">&laquo; Linux 常用命令</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15016791064845.html" 
-	        title="Next Post: 京东平台数据化运营">京东平台数据化运营 &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
+ 
+    
 
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
-
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15021597491039.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
+  
+  
 </div></div>
 
 

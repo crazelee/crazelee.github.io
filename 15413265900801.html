@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  PHP-FPM 运行原理 - Code & Economics
+  把时间当做朋友 - Code & Economics
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
@@ -340,107 +340,54 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>PHP-FPM 运行原理</h1>
+<h1>把时间当做朋友</h1>
 
-<h3 id="toc_0">一、Common Gateway Interface 通用网关接口</h3>
+<p>作者：李笑来<br/>
+阅读时间：2018年11月03日 至 2018年11月04日</p>
 
-<p>cgi是外部应用程序（cgi程序）与web服务器之间的接口标准</p>
+<h3 id="toc_0">时间无法管理，需要管理的是自己</h3>
 
-<p>工作原理<br/>
-<img src="media/15021597491039/15101933219088.jpg" alt=""/></p>
+<p>时间只会自顾自地流失，不会因为管理而变多变少，变快变慢。<br/>
+所以无法管理时间，需要管理的是自己，控制自己在什么时候做什么事情。</p>
 
-<h3 id="toc_1">二、演变过程</h3>
+<h3 id="toc_1">积累&amp;复利</h3>
 
-<h4 id="toc_2">阶段一: cgi</h4>
+<p>深信积累的力量，在你做某件事，学习某件技能的时候，初期可能是枯燥无聊的，短期内效果并无明显。但请相信积累的力量，一年365天，持之以恒的去坚持，你将会看到积累的力量。</p>
 
-<p>每接收到一个请求，都会fork一个cgi请求，结束后kill；如果有100个请求，就需要fork、kill php-cgi 100次</p>
+<h3 id="toc_2">请马上努力吧</h3>
 
-<h4 id="toc_3">阶段二：fast-cgi</h4>
+<ol>
+<li>心智，是一个人过往获得的一切知识以及经验的总和，包括这些所造就的思考方法与模式。</li>
+<li>欲望是无限的，每个人都想一夜暴富，可所有事情并不是一蹴而就的。</li>
+<li>用你所有换你想有。</li>
+<li>完美不是借口，不是你不开始做事的借口。</li>
+<li>现状无法突然被改变，工作态度不可骑驴找马，心不在焉，这样讲无所积累。</li>
+<li>在未知中不断前行，不能因为困难或未知而停下脚步，积累-&gt;成长-&gt;答案。</li>
+</ol>
 
-<p>处理完后不会kill，保留进程，可以一次处理多个请求</p>
+<h3 id="toc_3">改掉你的拖延症</h3>
 
-<h4 id="toc_4">阶段三：php-fpm</h4>
+<p>内部原因：怕开始做事以后，担心做错，担心做不好。<br/>
+外部原因：过分在意外部的评价。<br/>
+越拖延，心理将承受越来越大的压力。只要开始，你将会有新的收获。</p>
 
-<p>php-fast-cgi Process Manager 是FastCGI的实现，并提供进程管理</p>
+<h3 id="toc_4">方法论</h3>
 
-<p>两种进程：</p>
+<p>三思而后行：<br/>
+1. What，想要做什么，想要得到什么<br/>
+2. Why，为什么想要<br/>
+3. How，怎样做到。</p>
 
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>个数</th>
-<th>作用</th>
-</tr>
-</thead>
+<p>尝试<br/>
+1. 记录你的时间开销。<br/>
+2. 制定计划，做好时间预算。<br/>
+3. 对计划进行验收。</p>
 
-<tbody>
-<tr>
-<td><strong>master</strong></td>
-<td>一个</td>
-<td>监听端口，接收Web Server的请求</td>
-</tr>
-<tr>
-<td><strong>worker</strong></td>
-<td>多个</td>
-<td>每个进程内嵌一个PHP解释器，PHP代码真正执行的地方</td>
-</tr>
-</tbody>
-</table>
+<h3 id="toc_5">一点点儿鸡汤</h3>
 
-<h3 id="toc_5">三、nginx + php-fpm协作</h3>
+<p>学习是投资回报率最高的行为，习得一种技能将会多一扇窗，多一个世界。</p>
 
-<h5 id="toc_6">nginx 处理http请求，反向代理设置(nginx.conf)</h5>
-
-<pre><code>server{
-    ...
-    location ~ \.php$ {
-        include /usr/local/webserver/nginx/fastcgi.conf;  # nginx的fastcgi模块
-        fastcgi-pass 127.0.0.1:9000;
-    }
-}
-</code></pre>
-
-<h5 id="toc_7">php-fpm配置(php-fpm.conf)</h5>
-
-<pre><code>listen=127.0.0.1:9000
-</code></pre>
-
-<h3 id="toc_8">四、请求流程</h3>
-
-<pre><code>www.example.com
-        |
-        |
-WEB服务器：Nginx
-        |
-        |
-Nginx配置的location
-将请求路由到www.example.com/index.php
-        |
-        |
-加载nginx的fast-cgi模块
-        |
-        |
-fast-cgi监听127.0.0.1:9000地址
-        |
-        |
-www.example.com/index.php准发到达127.0.0.1:9000
-        |
-        |
-php-fpm master进程监听127.0.0.1:9000
-        |
-        |
-php-fpm 接收到请求，启用worker进程处理请求
-        |
-        |
-php-fpm 处理完请求，返回给nginx
-        |
-        |
-nginx将结果通过http返回给浏览器
-        
-</code></pre>
-
-<p>【源】<a href="https://segmentfault.com/a/1190000007322358">https://segmentfault.com/a/1190000007322358</a></p>
+<p>学习的方式：体验、试错、观察、阅读，最重要的，是独立地、正确地思考。</p>
 
 
 </div>
@@ -452,15 +399,13 @@ nginx将结果通过http返回给浏览器
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15021597682775.html"  title="Previous Post: Linux 常用命令">&laquo; Linux 常用命令</a>
-	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15016791064845.html" 
-	        title="Next Post: 京东平台数据化运营">京东平台数据化运营 &raquo;</a>
+	        <a href="15364616629932.html" 
+	        title="Next Post: Git 技能">Git 技能 &raquo;</a>
 	    
 	</div>
   </div>
@@ -473,7 +418,7 @@ nginx将结果通过http返回给浏览器
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15021597491039.html';
+		var currentURL = '15413265900801.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

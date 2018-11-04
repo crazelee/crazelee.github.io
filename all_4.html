@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Craze-lee 技术点滴
+  Code & Economics
   
   </title>
  <meta name="description" content=" A Web Developer 专业技术">
- <link href="atom.xml" rel="alternate" title="Craze-lee 技术点滴" type="application/atom+xml">
+ <link href="atom.xml" rel="alternate" title="Code & Economics" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
 
@@ -29,13 +29,13 @@
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
 <div id="header">
-    <h1><a href="index.html">Craze-lee 技术点滴</a></h1>
+    <h1><a href="index.html">Code & Economics</a></h1>
 </div>
 
 </nav>
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Craze-lee 技术点滴</span>
+    <span> &nbsp; Code & Economics</span>
   </a>
 </nav>
 
@@ -96,6 +96,8 @@
         <li class="divider"></li>
         <li><label>读书笔记</label></li>
 
+          
+            <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
           
             <li><a title="杂文" href="15247931810921.html">杂文</a></li>
           
@@ -252,6 +254,8 @@
                     
                       <li class="side-title"><span>读书笔记</span></li>
                         
+                          <li><a title="把时间当做朋友" href="15413265900801.html">把时间当做朋友</a></li>
+                        
                           <li><a title="杂文" href="15247931810921.html">杂文</a></li>
                         
                           <li><a title="京东平台数据化运营" href="15016791064845.html">京东平台数据化运营</a></li>
@@ -340,128 +344,178 @@
 
 	
 		<div class="markdown-body">
-		<h1>数据库</h1>
+		<h1>代码规范（clean-code-php）</h1>
 
-		<h3 id="toc_0">一、数据库结构</h3>
+		<p>【源】<a href="https://github.com/php-cpm/clean-code-php">https://github.com/php-cpm/clean-code-php</a></p>
 
-<p>Redis服务器将所有数据库都保存在服务器状态的db数组中</p>
+<h2 id="toc_0">一、介绍</h2>
 
-<pre><code class="language-c">struct redisServer {
-// ...
-// 一个数组，保存服务器中的所有数据库
-redisDb *db;
-// ...
-// 服务器的数据库数量（默认为16）
-int dbnum;
-};
+<h3 id="toc_1">变量</h3>
+
+<h4 id="toc_2">使用有意义的变量名称</h4>
+
+<pre><code>$currentDate = $moment-&gt;format(&#39;y-m-d&#39;);
 </code></pre>
 
-<p><img src="media/15246286049315/15246287458830.jpg" alt=""/></p>
+<h4 id="toc_3">使用可搜索变量，不要突然出现数字</h4>
 
-<p>默认Redis客户端的目标数据库为0号数据库，客户端可以通过select命令切换目标数据库</p>
+<pre><code>class User
+{
+    const ACCESS_READ = 1;
+    const ACCESS_CREATE = 2;
+    const ACCESS_UPDATE = 4;
+    const ACCESS_DELETE = 8;
+}
 
-<pre><code class="language-redis">redis&gt; set msg &quot;hello&quot;
-redis&gt; get msg
-&quot;hello&quot;
-redis&gt; select 2
-OK
-redis&gt;get msg
-(nil)
+if ($user-&gt;access &amp; User::ACCESS_UPDATE) {
+    // do edit ...
+}
 </code></pre>
 
-<p>客户端</p>
+<h4 id="toc_4">使用可解释的变量</h4>
 
-<pre><code class="language-c">typedef struct redisClient {
+<pre><code>$address = &#39;One Infinite Loop, Cupertino 95014&#39;;
+$cityZipCodeRegex = &#39;/^[^,]+,\s*(?&lt;city&gt;.+?)\s*(?&lt;zipCode&gt;\d{5})$/&#39;;
+preg_match($cityZipCodeRegex, $address, $matches);
+
+saveCityZipCode($matches[&#39;city&#39;], $matches[&#39;zipCode&#39;]);
+</code></pre>
+
+<h4 id="toc_5">避免嵌套过深</h4>
+
+<p>使用多重if/else，多层嵌套。可提前返回</p>
+
+<h4 id="toc_6">避免添加不需要的文本</h4>
+
+<p><strong>Bad:</strong></p>
+
+<pre><code>class Car
+{
+    public $carMake;
+    public $carModel;
+    public $carColor;
+
+    //...
+}
+</code></pre>
+
+<p><strong>Good:</strong></p>
+
+<pre><code>class Car
+{
+    public $make;
+    public $model;
+    public $color;
+
+    //...
+}
+</code></pre>
+
+<h4 id="toc_7">使用默认的参数值（PHP7）</h4>
+
+<p>使用类型提示，确保默认的参数值内容</p>
+
+<pre><code>function createMicrobrewery(string $breweryName = &#39;Hipster Brew Co.&#39;): void
+{
     // ...
-    // 记录客户端当前正在使用的数据库
-    // 指向redisServer.db数组的其中一个元素
-    redisDb *db;
-
-}redisClient;
+}
 </code></pre>
 
-<p><img src="media/15246286049315/15246292964469.jpg" alt=""/></p>
+<h3 id="toc_8">比较</h3>
 
-<h3 id="toc_1">数据库键空间</h3>
+<h4 id="toc_9">使用相同类型的比较</h4>
 
-<pre><code class="language-c">typedef struct redisDb{
-    // ... 
-    // 数据库键空间，保存数据库中的所有键值对
-    dict *dict;
-    
-}redisDb;
+<pre><code>$a = &#39;42&#39;;
+$b = 42;
+
+if ($a !== $b) {
+    // The expression is verified
+}
 </code></pre>
 
-<p>数据存储在dict字典中</p>
+<h3 id="toc_10">函数</h3>
 
-<pre><code class="language-redis">redis&gt;set message &quot;hello&quot;
-redis&gt;rpush alphabet &quot;a&quot; &quot;b&quot; &quot;c&quot;
-redis&gt;hset book name &quot;Redis in Action&quot;
-redis&gt;hset book author &quot;Josiah L. Carlson&quot;
-redis&gt;hset book publisher &quot;Manning&quot;
+<h4 id="toc_11">函数变量个数：超过2个请更换变量类型</h4>
+
+<p><strong>Bad:</strong></p>
+
+<pre><code>function createMenu(string $title, string $body, string $buttonText, bool $cancellable): void
+{
+    // ...
+}
 </code></pre>
 
-<p><img src="media/15246286049315/15246298293232.jpg" alt=""/></p>
+<p><strong>Good:</strong></p>
 
-<h3 id="toc_2">过期策略</h3>
+<pre><code>class MenuConfig
+{
+    public $title;
+    public $body;
+    public $buttonText;
+    public $cancellable = false;
+}
 
-<p>使用expire等命令设置键值的过期时间后，会在数据库字典存储过期键值</p>
+$config = new MenuConfig();
+$config-&gt;title = &#39;Foo&#39;;
+$config-&gt;body = &#39;Bar&#39;;
+$config-&gt;buttonText = &#39;Baz&#39;;
+$config-&gt;cancellable = true;
 
-<p><img src="media/15246286049315/15246377009747.jpg" alt=""/></p>
+function createMenu(MenuConfig $config): void
+{
+    // ...
+}
+</code></pre>
 
-<p>惰性删除与定时删除结合</p>
+<h4 id="toc_12">函数名说明要干什么事情</h4>
 
-<h4 id="toc_3">惰性删除策略</h4>
+<p><img src="media/15179703597965/15227492200797.jpg" alt=""/></p>
 
-<p>读写数据库都会调用expireIfNeeded函数进行检查<br/>
-即使用的时候检查是否已过期，如果已过期则删除：数据字典里的键以及过期字典里的键</p>
+<h4 id="toc_13">不要使用标志来作为函数的参数</h4>
 
-<p><img src="media/15246286049315/15246377777265.jpg" alt=""/></p>
+<p><img src="media/15179703597965/15227499569108.jpg" alt=""/></p>
 
-<h4 id="toc_4">定时删除策略</h4>
+<h4 id="toc_14">不要使用全局函数</h4>
 
-<p>redis服务器周期性操作serverCron函数，分多次遍历服务器中的各个数据库，从expires字典中<strong>随机检查一部分键的过期情况</strong>，并删除其中的过期键</p>
+<p><img src="media/15179703597965/15227502849378.jpg" alt=""/></p>
 
-<p><img src="media/15246286049315/15246380243999.jpg" alt=""/></p>
+<h4 id="toc_15">封装条件</h4>
 
-<h3 id="toc_5">RDB、AOF和复制功能对过期键的处理</h3>
+<p><img src="media/15179703597965/15227509405487.jpg" alt=""/></p>
 
-<h4 id="toc_6">RDB文件</h4>
+<h4 id="toc_16">不要用相反的条件</h4>
 
-<p><strong>1. 生成RDB文件</strong><br/>
-执行save、bgsave命令会创建新的RDB文件，程序会对数据库中键进行检查，已过期的不会保存在文件中。</p>
+<p><img src="media/15179703597965/15227510159705.jpg" alt=""/></p>
 
-<p><strong>2. 载入RDB文件</strong><br/>
-启动Redis服务器是，如果开启了RDB功能，会对RDB进行载入：<br/>
-- 以主服务器模式运行，载入文件时<em>会将已过期的键自动忽略</em>；<br/>
-- 以从服务器模式运行，载入时<em>会全部载入到数据库中</em>。不过主从服务器进行数据同步时，会将从服务器的数据先全部清空</p>
+<h4 id="toc_17">删除无用的代码</h4>
 
-<h4 id="toc_7">AOF文件</h4>
+<p>不要预留不用的代码</p>
 
-<p>以AOF持久化模式运行的，如果某个键已过期，被惰性删除或定期删除后，程序会向AOF文件追加一条DEL命令，来显示记录该键已被删除。</p>
+<h3 id="toc_18">对象&amp;数据结构</h3>
 
-<p>例子：客户端想要访问GET message，但是message是过期键，则：</p>
+<h4 id="toc_19">使用对象封装你的行为</h4>
 
-<ol>
-<li>从数据库中删除message键；</li>
-<li>追加一条 DEL message 命令到AOF文件；</li>
-<li>向执行GET命令的客户端返回空回复。</li>
-</ol>
+<p><img src="media/15179703597965/15228052140369.jpg" alt=""/></p>
 
-<h3 id="toc_8">复制模式</h3>
+<p><img src="media/15179703597965/15228052546588.jpg" alt=""/></p>
 
-<p>当服务器运行在复制模式下，从服务器的过期键删除操作由主服务器控制。</p>
+<h4 id="toc_20">对象成员尽量private或protected</h4>
 
-<ol>
-<li>主服务器删除过期键之后，显式地向所有从服务器发送DEL命令</li>
-<li>从服务器执行客户端的读命令时，即使碰到过期键也不会删除，而是会像正常键一样返回</li>
-<li>从服务器只有接收到主服务器的DEL命令才会删除</li>
-</ol>
+<p><img src="media/15179703597965/15228054224967.jpg" alt=""/></p>
 
-<p><img src="media/15246286049315/15246392564789.jpg" alt=""/></p>
+<h3 id="toc_21">类</h3>
 
 
 		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
 	
 
  
